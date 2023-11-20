@@ -35,7 +35,7 @@ class WelcomePage extends StatelessWidget {
       height: duSetHeight(70),
       margin: EdgeInsets.only(top: duSetHeight(14)),
       child: Text(
-        "这是一段描述性文本",
+        "享科技成果 成安全服务",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: AppColors.primaryText,

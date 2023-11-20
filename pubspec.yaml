@@ -50,9 +50,9 @@ dependencies:
   cached_network_image: ^3.3.0
   device_info_plus: ^9.1.0
   provider: ^6.1.1
-  flutter_easyrefresh: ^2.2.2
   intl: ^0.18.1
   auto_route: ^7.8.4
+  easy_refresh: ^3.3.2+4
 
 dev_dependencies:
   flutter_test:

@@ -213,7 +213,7 @@ class HttpUtil {
     String? token = StorageUtil().getString(STORAGE_USER_TOKEN_KEY);
     if (token != null) {
       options = Options(headers: {
-        // 'Authorization': 'Bearer $token',
+        'Authorization': 'token $token',
       });
     }
     return options;
@@ -221,7 +221,7 @@ class HttpUtil {
 
   /// restful get 操作
   Future get(String path,
-      {dynamic params, Options? options, CancelToken? cancelToken}) async {
+      {required Map<String,dynamic> params, Options? options, CancelToken? cancelToken}) async {
     try {
       var tokenOptions = options ?? getLocalOptions();
       var singResp = duHttpBefore("GET",params,CHANNEL_NUMBER);
@@ -237,7 +237,7 @@ class HttpUtil {
 
   /// restful post 操作
   Future post(String path,
-      {dynamic params,
+      {required Map<String,dynamic> params,
        Options? options,
        CancelToken? cancelToken}) async {
     try {
@@ -246,7 +246,6 @@ class HttpUtil {
       var response = await dio.post(path,
           queryParameters: singResp['params'],
           data: singResp['data'], options: tokenOptions, cancelToken: cancelToken);
-      print(response.data);
       return response.data;
     } on DioException catch (e) {
       throw createErrorEntity(e);
@@ -255,7 +254,7 @@ class HttpUtil {
 
   /// restful put 操作
   Future put(String path,
-      {dynamic params, Options? options, CancelToken? cancelToken}) async {
+      {required Map<String,dynamic> params, Options? options, CancelToken? cancelToken}) async {
     try {
       var tokenOptions = options ?? getLocalOptions();
       var singResp = duHttpBefore("PUT",params,CHANNEL_NUMBER);
@@ -270,7 +269,7 @@ class HttpUtil {
 
   /// restful delete 操作
   Future delete(String path,
-      {dynamic params, Options? options, CancelToken? cancelToken}) async {
+      {required Map<String,dynamic> params, Options? options, CancelToken? cancelToken}) async {
     try {
       var tokenOptions = options ?? getLocalOptions();
       var singResp = duHttpBefore("GET",params,CHANNEL_NUMBER);

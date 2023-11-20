@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageUtil {
@@ -51,6 +53,16 @@ class StorageUtil {
 
   List<String> getStringList(String key, {List<String> defaultValue = const []}) {
     return _prefs.getStringList(key) ?? defaultValue;
+  }
+
+  Future<bool> setJson(String key, dynamic jsonVal) async {
+    String value = jsonEncode(jsonVal);
+    return await _prefs.setString(key, value);
+  }
+
+  dynamic getJson(String key, {dynamic defaultValue = const {}}) {
+    String? jsonString = _prefs.getString(key);
+    return jsonString == null ? defaultValue : jsonDecode(jsonString);
   }
 
   Future<bool> remove(String key) async {

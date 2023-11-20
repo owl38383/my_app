@@ -2,6 +2,7 @@ set http_proxy=http://127.0.0.1:10809
 set https_proxy=http://127.0.0.1:10809
 
 git config http.proxy http://127.0.0.1:10809
+git config https.proxy http://127.0.0.1:10809
 
 # 安装依赖
 # 屏幕适配
@@ -33,3 +34,9 @@ crypto: ^3.0.3
 device_info_plus: ^9.1.0
 # 状态管理
 provider: ^6.1.1
+
+
+
+## auto_router 使用 
+`flutter packages pub run build_runner watch`
+`flutter packages pub run build_runner build`

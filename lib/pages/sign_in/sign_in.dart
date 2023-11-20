@@ -2,10 +2,12 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/entitys/entitys.dart';
+import 'package:my_app/common/entitys/user_login_resp_entity.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
 import 'package:my_app/common/apis/apis.dart';
+import 'package:my_app/global.dart';
 
 @RoutePage()
 class SignInPage extends StatefulWidget {
@@ -25,7 +27,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   void initState() {
     super.initState();
-    _emailController.text = '15710013761';
+    _emailController.text = '15710013762';
     _passController.text = '111111';
   }
 
@@ -38,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   // 执行登录操作
-  _handleSignIn() async {
+  _handleSignIn(BuildContext context) async {
     // if (!duIsEmail(_emailController.value.text)) {
     //   toastInfo(msg: '请正确输入邮件');
     //   return;
@@ -48,12 +50,21 @@ class _SignInPageState extends State<SignInPage> {
     //   return;
     // }
 
-    UserRequestEntity params = UserRequestEntity.fromJson({
+    UserLoginRequestEntity params = UserLoginRequestEntity.fromJson({
       "user_name": _emailController.value.text,
       "user_pwd": _passController.value.text,
     });
-    UserResponseEntity entity = await UserAPI.login(params: params);
+    UserLoginRespEntity userProfile = await UserAPI.login(params: params);
+    // 保存用户信息
+    Global.saveProfile(userProfile);
+    // 保存单位信息
+    Map<String,dynamic> companyList = await UserAPI.getCompanyListApi(params: {
+      "unit_type": 'info_company_cared',
+    });
+    StorageUtil().setJson(STORAGE_USER_COMPANY_KEY, companyList['data']['list']);
     toastInfo(msg: '登陆成功');
+    var router = AutoRouter.of(context);
+    router.pushNamed('/home');
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
   }
@@ -148,7 +159,7 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 // 登录
                 btnFlatButtonWidget(
-                  onPressed: () => _handleSignIn(),
+                  onPressed: () => _handleSignIn(context),
                   gbColor: AppColors.primaryElement,
                   title: "登陆",
                   width: duSetWidth(295 * 0.75),
