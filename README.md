@@ -40,3 +40,10 @@ provider: ^6.1.1
 ## auto_router 使用 
 `flutter packages pub run build_runner watch`
 `flutter packages pub run build_runner build`
+
+
+
+### 问题记录
+ListView
+在flutter开发中，：初始加载数据时，偏离顶部一定距离或者说顶部没有对齐：
+padding: const EdgeInsets.only(top: 0),

@@ -5,10 +5,10 @@ export 'package:my_app/generated/json/user_login_resp_entity.g.dart';
 
 @JsonSerializable()
 class UserLoginRespEntity {
-	late int code;
-	late String msg;
+	late int code = 0;
+	late String msg = '';
 	@JSONField(name: "eng_msg")
-	late String engMsg;
+	late String engMsg = '';
 	late UserLoginRespData data;
 
 	UserLoginRespEntity();
@@ -32,83 +32,83 @@ class UserLoginRespData {
 	@JSONField(name: "enum_user_role")
 	late UserLoginRespDataEnumUserRole enumUserRole;
 	@JSONField(name: "phone_num")
-	late String phoneNum;
-	late String email;
-	late String name;
+	late String phoneNum = '';
+	late String email = '';
+	late String name = '';
 	@JSONField(name: "nick_name")
-	late String nickName;
-	late int gender;
-	late List<String> avatar;
-	late String remarks;
-	late String account;
+	late String nickName = '';
+	late int gender = 0;
+	late List<String> avatar = [];
+	late String remarks = '';
+	late String account = '';
 	@JSONField(name: "last_login_time")
-	late String lastLoginTime;
+	late String lastLoginTime = '';
 	@JSONField(name: "joined_time")
-	late String joinedTime;
+	late String joinedTime = '';
 	@JSONField(name: "is_superuser")
-	late int isSuperuser;
+	late int isSuperuser = 0;
 	@JSONField(name: "first_name")
-	late String firstName;
+	late String firstName = '';
 	@JSONField(name: "last_name")
-	late String lastName;
+	late String lastName = '';
 	@JSONField(name: "id_code")
-	late String idCode;
+	late String idCode = '';
 	@JSONField(name: "enum_user_staff")
 	late UserLoginRespDataEnumUserStaff enumUserStaff;
 	@JSONField(name: "is_active")
-	late int isActive;
+	late int isActive = 0;
 	@JSONField(name: "create_time")
-	late String createTime;
+	late String createTime = '';
 	@JSONField(name: "update_time")
-	late String updateTime;
+	late String updateTime = '';
 	@JSONField(name: "creater_id")
-	late int createrId;
+	late int createrId = 0;
 	@JSONField(name: "political_status")
-	late String politicalStatus;
+	late String politicalStatus = '';
 	@JSONField(name: "enum_user_status")
 	late UserLoginRespDataEnumUserStatus enumUserStatus;
 	@JSONField(name: "time_user_status")
-	late String timeUserStatus;
-	late String nation;
-	late String address;
+	late String timeUserStatus = '';
+	late String nation = '';
+	late String address = '';
 	@JSONField(name: "account_nature")
-	late String accountNature;
+	late String accountNature = '';
 	@JSONField(name: "account_source")
-	late int accountSource;
+	late int accountSource = 0;
 	@JSONField(name: "center_id")
-	late int centerId;
+	late int centerId = 0;
 	@JSONField(name: "company_id")
-	late int companyId;
+	late int companyId = 0;
 	@JSONField(name: "company_type")
-	late String companyType;
+	late String companyType = '';
 	@JSONField(name: "is_reset_pwd")
-	late int isResetPwd;
+	late int isResetPwd = 0;
 	@JSONField(name: "enum_user_alarm_mode")
 	late UserLoginRespDataEnumUserAlarmMode enumUserAlarmMode;
 	@JSONField(name: "time_start_alarm_mode")
-	late String timeStartAlarmMode;
+	late String timeStartAlarmMode = '';
 	@JSONField(name: "user_pic")
-	late List<UserLoginRespDataUserPic> userPic;
+	late List<UserLoginRespDataUserPic> userPic = [];
 	@JSONField(name: "register_status")
-	late int registerStatus;
+	late int registerStatus = 0;
 	@JSONField(name: "user_value")
-	late int userValue;
+	late int userValue = 0;
 	@JSONField(name: "user_intention")
-	late int userIntention;
+	late int userIntention = 0;
 	@JSONField(name: "expired_time")
 	dynamic expiredTime;
 	@JSONField(name: "is_del")
-	late int isDel;
+	late int isDel = 0;
 	@JSONField(name: "home_vip")
-	late int homeVip;
+	late int homeVip = 0;
 	@JSONField(name: "agree_term")
-	late int agreeTerm;
-	late String token;
+	late int agreeTerm = 0;
+	late String token = '';
 	@JSONField(name: "company_name")
-	late String companyName;
-	late List<UserLoginRespDataAuth> auth;
+	late String companyName = '';
+	late List<UserLoginRespDataAuth> auth = [];
 	@JSONField(name: "setting_user")
-	late List<UserLoginRespDataSettingUser> settingUser;
+	late List<UserLoginRespDataSettingUser> settingUser = [];
 
 	UserLoginRespData();
 
@@ -125,13 +125,13 @@ class UserLoginRespData {
 @JsonSerializable()
 class UserLoginRespDataEnumUserType {
 	@JSONField(name: "used_flag")
-	late int usedFlag;
-	late String name;
+	late int usedFlag = 0;
+	late String name = '';
 	@JSONField(name: "company_class")
-	late String companyClass;
+	late String companyClass = '';
 	@JSONField(name: "eng_name")
-	late String engName;
-	late int id;
+	late String engName = '';
+	late int id = 0;
 
 	UserLoginRespDataEnumUserType();
 
@@ -147,18 +147,18 @@ class UserLoginRespDataEnumUserType {
 
 @JsonSerializable()
 class UserLoginRespDataEnumUserRole {
-	late String name;
+	late String name = '';
 	@JSONField(name: "used_flag")
-	late int usedFlag;
+	late int usedFlag = 0;
 	@JSONField(name: "eng_name")
-	late String engName;
+	late String engName = '';
 	@JSONField(name: "company_class")
-	late String companyClass;
+	late String companyClass = '';
 	@JSONField(name: "is_admin")
-	late int isAdmin;
+	late int isAdmin = 0;
 	@JSONField(name: "enum_user_type")
-	late int enumUserType;
-	late int id;
+	late int enumUserType = 0;
+	late int id = 0;
 
 	UserLoginRespDataEnumUserRole();
 
@@ -174,8 +174,8 @@ class UserLoginRespDataEnumUserRole {
 
 @JsonSerializable()
 class UserLoginRespDataEnumUserStaff {
-	late int id;
-	late String name;
+	late int id = 0;
+	late String name = '';
 
 	UserLoginRespDataEnumUserStaff();
 
@@ -191,10 +191,10 @@ class UserLoginRespDataEnumUserStaff {
 
 @JsonSerializable()
 class UserLoginRespDataEnumUserStatus {
-	late String status;
+	late String status = '';
 	@JSONField(name: "eng_status")
-	late String engStatus;
-	late int id;
+	late String engStatus = '';
+	late int id = 0;
 
 	UserLoginRespDataEnumUserStatus();
 
@@ -210,8 +210,8 @@ class UserLoginRespDataEnumUserStatus {
 
 @JsonSerializable()
 class UserLoginRespDataEnumUserAlarmMode {
-	late int id;
-	late String name;
+	late int id = 0;
+	late String name = '';
 
 	UserLoginRespDataEnumUserAlarmMode();
 
@@ -228,9 +228,9 @@ class UserLoginRespDataEnumUserAlarmMode {
 @JsonSerializable()
 class UserLoginRespDataUserPic {
 	@JSONField(name: "file_id")
-	late int fileId;
+	late int fileId = 0;
 	@JSONField(name: "absolute_path")
-	late String absolutePath;
+	late String absolutePath = '';
 
 	UserLoginRespDataUserPic();
 
@@ -246,16 +246,16 @@ class UserLoginRespDataUserPic {
 
 @JsonSerializable()
 class UserLoginRespDataAuth {
-	late String name;
-	late String type;
-	late String route;
-	late String desc;
+	late String name = '';
+	late String type = '';
+	late String route = '';
+	late String desc = '';
 	@JSONField(name: "is_active")
-	late int isActive;
-	late int auth;
-	late String id;
-	late String pid;
-	late List<UserLoginRespDataAuthChildren> children;
+	late int isActive = 0;
+	late int auth = 0;
+	late String id = '';
+	late String pid = '';
+	late List<UserLoginRespDataAuthChildren> children = [];
 
 	UserLoginRespDataAuth();
 
@@ -271,16 +271,16 @@ class UserLoginRespDataAuth {
 
 @JsonSerializable()
 class UserLoginRespDataAuthChildren {
-	late String name;
-	late String type;
-	late String route;
-	late String desc;
+	late String name = '';
+	late String type = '';
+	late String route = '';
+	late String desc = '';
 	@JSONField(name: "is_active")
-	late int isActive;
-	late int auth;
-	late String id;
-	late String pid;
-	late List<UserLoginRespDataAuthChildrenChildren> children;
+	late int isActive = 0;
+	late int auth = 0;
+	late String id = '';
+	late String pid = '';
+	late List<UserLoginRespDataAuthChildrenChildren> children = [];
 
 	UserLoginRespDataAuthChildren();
 
@@ -296,16 +296,16 @@ class UserLoginRespDataAuthChildren {
 
 @JsonSerializable()
 class UserLoginRespDataAuthChildrenChildren {
-	late String name;
-	late String type;
-	late String route;
-	late String desc;
+	late String name = '';
+	late String type = '';
+	late String route = '';
+	late String desc = '';
 	@JSONField(name: "is_active")
-	late int isActive;
-	late int auth;
-	late String id;
-	late String pid;
-	late List<UserLoginRespDataAuthChildrenChildrenChildren> children;
+	late int isActive = 0;
+	late int auth = 0;
+	late String id = '';
+	late String pid = '';
+	late List<UserLoginRespDataAuthChildrenChildrenChildren> children = [];
 
 	UserLoginRespDataAuthChildrenChildren();
 
@@ -321,16 +321,16 @@ class UserLoginRespDataAuthChildrenChildren {
 
 @JsonSerializable()
 class UserLoginRespDataAuthChildrenChildrenChildren {
-	late String name;
-	late String type;
-	late String route;
-	late String desc;
+	late String name = '';
+	late String type = '';
+	late String route = '';
+	late String desc = '';
 	@JSONField(name: "is_active")
-	late int isActive;
-	late int auth;
-	late String id;
-	late String pid;
-	late List<UserLoginRespDataAuthChildrenChildrenChildrenChildren> children;
+	late int isActive = 0;
+	late int auth = 0;
+	late String id = '';
+	late String pid = '';
+	late List<UserLoginRespDataAuthChildrenChildrenChildrenChildren> children = [];
 
 	UserLoginRespDataAuthChildrenChildrenChildren();
 
@@ -346,16 +346,16 @@ class UserLoginRespDataAuthChildrenChildrenChildren {
 
 @JsonSerializable()
 class UserLoginRespDataAuthChildrenChildrenChildrenChildren {
-	late String name;
-	late String type;
-	late String route;
-	late String desc;
+	late String name = '';
+	late String type = '';
+	late String route = '';
+	late String desc = '';
 	@JSONField(name: "is_active")
-	late int isActive;
-	late int auth;
-	late String id;
-	late String pid;
-	late List<String> children;
+	late int isActive = 0;
+	late int auth = 0;
+	late String id = '';
+	late String pid = '';
+	late List<String> children = [];
 
 	UserLoginRespDataAuthChildrenChildrenChildrenChildren();
 
@@ -389,21 +389,21 @@ class UserLoginRespDataSettingUser {
 @JsonSerializable()
 class UserLoginRespDataSettingUserInfoUserPushSetting {
 	@JSONField(name: "setting_id")
-	late int settingId;
+	late int settingId = 0;
 	@JSONField(name: "user_id")
-	late int userId;
+	late int userId = 0;
 	@JSONField(name: "push_code")
-	late String pushCode;
-	late String sound;
-	late int prompt;
-	late int beep;
-	late String channel;
+	late String pushCode = '';
+	late String sound = '';
+	late int prompt = 0;
+	late int beep = 0;
+	late String channel = '';
 	@JSONField(name: "create_time")
-	late String createTime;
+	late String createTime = '';
 	@JSONField(name: "update_time")
-	late String updateTime;
+	late String updateTime = '';
 	@JSONField(name: "creater_id")
-	late int createrId;
+	late int createrId = 0;
 
 	UserLoginRespDataSettingUserInfoUserPushSetting();
 

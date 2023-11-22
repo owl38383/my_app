@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 
-Widget buildCard(Map<String, dynamic> cardInfo) {
+Widget buildCard(CountByCaredData cardInfo) {
   return Container(
     padding: EdgeInsets.all(duSetHeight(5)),
     height: duSetHeight(120),
@@ -12,7 +13,7 @@ Widget buildCard(Map<String, dynamic> cardInfo) {
       border: Border.fromBorderSide(Borders.primaryBorder),
       borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角
       boxShadow: [
-        Shadows.primaryShadow,
+        // Shadows.primaryShadow,
       ],
     ),
     child: Center(
@@ -27,7 +28,7 @@ Widget buildCard(Map<String, dynamic> cardInfo) {
                 fit: BoxFit.none,
               ),
               Text(
-                '${cardInfo['device_total']}',
+                '${cardInfo.deviceTotal}',
               ),
               Text(
                 '设备总数',
@@ -38,13 +39,13 @@ Widget buildCard(Map<String, dynamic> cardInfo) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                '${cardInfo['count_alarm_device']}',
+                '${cardInfo.countAlarmDevice}',
               ),
               Text(
                 '火警设备',
               ),
               Text(
-                '${cardInfo['count_abnormal_device']}',
+                '${cardInfo.countFaultDevice}',
               ),
               Text(
                 '异常设备',
@@ -55,13 +56,13 @@ Widget buildCard(Map<String, dynamic> cardInfo) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                '${cardInfo['count_fault_device']}',
+                '${cardInfo.countFaultDevice}',
               ),
               Text(
                 '故障设备',
               ),
               Text(
-                '${cardInfo['offline_device_total']}',
+                '${cardInfo.offlineDeviceTotal}',
               ),
               Text(
                 '离线设备',

@@ -1,5 +1,5 @@
 import 'package:my_app/generated/json/base/json_convert_content.dart';
-import 'package:my_app/common/entitys/user_login_resp_entity.dart';
+import 'package:my_app/common/entitys/login/user_login_resp_entity.dart';
 
 UserLoginRespEntity $UserLoginRespEntityFromJson(Map<String, dynamic> json) {
   final UserLoginRespEntity userLoginRespEntity = UserLoginRespEntity();
@@ -15,8 +15,7 @@ UserLoginRespEntity $UserLoginRespEntityFromJson(Map<String, dynamic> json) {
   if (engMsg != null) {
     userLoginRespEntity.engMsg = engMsg;
   }
-  final UserLoginRespData? data = jsonConvert.convert<UserLoginRespData>(
-      json['data']);
+  final UserLoginRespData? data = jsonConvert.convert<UserLoginRespData>(json['data']);
   if (data != null) {
     userLoginRespEntity.data = data;
   }
@@ -53,13 +52,13 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (userId != null) {
     userLoginRespData.userId = userId;
   }
-  final UserLoginRespDataEnumUserType? enumUserType = jsonConvert.convert<
-      UserLoginRespDataEnumUserType>(json['enum_user_type']);
+  final UserLoginRespDataEnumUserType? enumUserType = jsonConvert.convert<UserLoginRespDataEnumUserType>(
+      json['enum_user_type']);
   if (enumUserType != null) {
     userLoginRespData.enumUserType = enumUserType;
   }
-  final UserLoginRespDataEnumUserRole? enumUserRole = jsonConvert.convert<
-      UserLoginRespDataEnumUserRole>(json['enum_user_role']);
+  final UserLoginRespDataEnumUserRole? enumUserRole = jsonConvert.convert<UserLoginRespDataEnumUserRole>(
+      json['enum_user_role']);
   if (enumUserRole != null) {
     userLoginRespData.enumUserRole = enumUserRole;
   }
@@ -96,8 +95,7 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (account != null) {
     userLoginRespData.account = account;
   }
-  final String? lastLoginTime = jsonConvert.convert<String>(
-      json['last_login_time']);
+  final String? lastLoginTime = jsonConvert.convert<String>(json['last_login_time']);
   if (lastLoginTime != null) {
     userLoginRespData.lastLoginTime = lastLoginTime;
   }
@@ -121,8 +119,8 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (idCode != null) {
     userLoginRespData.idCode = idCode;
   }
-  final UserLoginRespDataEnumUserStaff? enumUserStaff = jsonConvert.convert<
-      UserLoginRespDataEnumUserStaff>(json['enum_user_staff']);
+  final UserLoginRespDataEnumUserStaff? enumUserStaff = jsonConvert.convert<UserLoginRespDataEnumUserStaff>(
+      json['enum_user_staff']);
   if (enumUserStaff != null) {
     userLoginRespData.enumUserStaff = enumUserStaff;
   }
@@ -142,18 +140,16 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (createrId != null) {
     userLoginRespData.createrId = createrId;
   }
-  final String? politicalStatus = jsonConvert.convert<String>(
-      json['political_status']);
+  final String? politicalStatus = jsonConvert.convert<String>(json['political_status']);
   if (politicalStatus != null) {
     userLoginRespData.politicalStatus = politicalStatus;
   }
-  final UserLoginRespDataEnumUserStatus? enumUserStatus = jsonConvert.convert<
-      UserLoginRespDataEnumUserStatus>(json['enum_user_status']);
+  final UserLoginRespDataEnumUserStatus? enumUserStatus = jsonConvert.convert<UserLoginRespDataEnumUserStatus>(
+      json['enum_user_status']);
   if (enumUserStatus != null) {
     userLoginRespData.enumUserStatus = enumUserStatus;
   }
-  final String? timeUserStatus = jsonConvert.convert<String>(
-      json['time_user_status']);
+  final String? timeUserStatus = jsonConvert.convert<String>(json['time_user_status']);
   if (timeUserStatus != null) {
     userLoginRespData.timeUserStatus = timeUserStatus;
   }
@@ -165,8 +161,7 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (address != null) {
     userLoginRespData.address = address;
   }
-  final String? accountNature = jsonConvert.convert<String>(
-      json['account_nature']);
+  final String? accountNature = jsonConvert.convert<String>(json['account_nature']);
   if (accountNature != null) {
     userLoginRespData.accountNature = accountNature;
   }
@@ -190,22 +185,17 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (isResetPwd != null) {
     userLoginRespData.isResetPwd = isResetPwd;
   }
-  final UserLoginRespDataEnumUserAlarmMode? enumUserAlarmMode = jsonConvert
-      .convert<UserLoginRespDataEnumUserAlarmMode>(
+  final UserLoginRespDataEnumUserAlarmMode? enumUserAlarmMode = jsonConvert.convert<UserLoginRespDataEnumUserAlarmMode>(
       json['enum_user_alarm_mode']);
   if (enumUserAlarmMode != null) {
     userLoginRespData.enumUserAlarmMode = enumUserAlarmMode;
   }
-  final String? timeStartAlarmMode = jsonConvert.convert<String>(
-      json['time_start_alarm_mode']);
+  final String? timeStartAlarmMode = jsonConvert.convert<String>(json['time_start_alarm_mode']);
   if (timeStartAlarmMode != null) {
     userLoginRespData.timeStartAlarmMode = timeStartAlarmMode;
   }
-  final List<UserLoginRespDataUserPic>? userPic = (json['user_pic'] as List<
-      dynamic>?)?.map(
-          (e) =>
-      jsonConvert.convert<UserLoginRespDataUserPic>(
-          e) as UserLoginRespDataUserPic).toList();
+  final List<UserLoginRespDataUserPic>? userPic = (json['user_pic'] as List<dynamic>?)?.map(
+          (e) => jsonConvert.convert<UserLoginRespDataUserPic>(e) as UserLoginRespDataUserPic).toList();
   if (userPic != null) {
     userLoginRespData.userPic = userPic;
   }
@@ -245,20 +235,13 @@ UserLoginRespData $UserLoginRespDataFromJson(Map<String, dynamic> json) {
   if (companyName != null) {
     userLoginRespData.companyName = companyName;
   }
-  final List<UserLoginRespDataAuth>? auth = (json['auth'] as List<dynamic>?)
-      ?.map(
-          (e) =>
-      jsonConvert.convert<UserLoginRespDataAuth>(e) as UserLoginRespDataAuth)
-      .toList();
+  final List<UserLoginRespDataAuth>? auth = (json['auth'] as List<dynamic>?)?.map(
+          (e) => jsonConvert.convert<UserLoginRespDataAuth>(e) as UserLoginRespDataAuth).toList();
   if (auth != null) {
     userLoginRespData.auth = auth;
   }
-  final List<
-      UserLoginRespDataSettingUser>? settingUser = (json['setting_user'] as List<
-      dynamic>?)?.map(
-          (e) =>
-      jsonConvert.convert<UserLoginRespDataSettingUser>(
-          e) as UserLoginRespDataSettingUser).toList();
+  final List<UserLoginRespDataSettingUser>? settingUser = (json['setting_user'] as List<dynamic>?)?.map(
+          (e) => jsonConvert.convert<UserLoginRespDataSettingUser>(e) as UserLoginRespDataSettingUser).toList();
   if (settingUser != null) {
     userLoginRespData.settingUser = settingUser;
   }
@@ -418,8 +401,7 @@ extension UserLoginRespDataExtension on UserLoginRespData {
   }
 }
 
-UserLoginRespDataEnumUserType $UserLoginRespDataEnumUserTypeFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataEnumUserType $UserLoginRespDataEnumUserTypeFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataEnumUserType userLoginRespDataEnumUserType = UserLoginRespDataEnumUserType();
   final int? usedFlag = jsonConvert.convert<int>(json['used_flag']);
   if (usedFlag != null) {
@@ -429,8 +411,7 @@ UserLoginRespDataEnumUserType $UserLoginRespDataEnumUserTypeFromJson(
   if (name != null) {
     userLoginRespDataEnumUserType.name = name;
   }
-  final String? companyClass = jsonConvert.convert<String>(
-      json['company_class']);
+  final String? companyClass = jsonConvert.convert<String>(json['company_class']);
   if (companyClass != null) {
     userLoginRespDataEnumUserType.companyClass = companyClass;
   }
@@ -445,8 +426,7 @@ UserLoginRespDataEnumUserType $UserLoginRespDataEnumUserTypeFromJson(
   return userLoginRespDataEnumUserType;
 }
 
-Map<String, dynamic> $UserLoginRespDataEnumUserTypeToJson(
-    UserLoginRespDataEnumUserType entity) {
+Map<String, dynamic> $UserLoginRespDataEnumUserTypeToJson(UserLoginRespDataEnumUserType entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['used_flag'] = entity.usedFlag;
   data['name'] = entity.name;
@@ -473,8 +453,7 @@ extension UserLoginRespDataEnumUserTypeExtension on UserLoginRespDataEnumUserTyp
   }
 }
 
-UserLoginRespDataEnumUserRole $UserLoginRespDataEnumUserRoleFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataEnumUserRole $UserLoginRespDataEnumUserRoleFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataEnumUserRole userLoginRespDataEnumUserRole = UserLoginRespDataEnumUserRole();
   final String? name = jsonConvert.convert<String>(json['name']);
   if (name != null) {
@@ -488,8 +467,7 @@ UserLoginRespDataEnumUserRole $UserLoginRespDataEnumUserRoleFromJson(
   if (engName != null) {
     userLoginRespDataEnumUserRole.engName = engName;
   }
-  final String? companyClass = jsonConvert.convert<String>(
-      json['company_class']);
+  final String? companyClass = jsonConvert.convert<String>(json['company_class']);
   if (companyClass != null) {
     userLoginRespDataEnumUserRole.companyClass = companyClass;
   }
@@ -508,8 +486,7 @@ UserLoginRespDataEnumUserRole $UserLoginRespDataEnumUserRoleFromJson(
   return userLoginRespDataEnumUserRole;
 }
 
-Map<String, dynamic> $UserLoginRespDataEnumUserRoleToJson(
-    UserLoginRespDataEnumUserRole entity) {
+Map<String, dynamic> $UserLoginRespDataEnumUserRoleToJson(UserLoginRespDataEnumUserRole entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['name'] = entity.name;
   data['used_flag'] = entity.usedFlag;
@@ -542,8 +519,7 @@ extension UserLoginRespDataEnumUserRoleExtension on UserLoginRespDataEnumUserRol
   }
 }
 
-UserLoginRespDataEnumUserStaff $UserLoginRespDataEnumUserStaffFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataEnumUserStaff $UserLoginRespDataEnumUserStaffFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataEnumUserStaff userLoginRespDataEnumUserStaff = UserLoginRespDataEnumUserStaff();
   final int? id = jsonConvert.convert<int>(json['id']);
   if (id != null) {
@@ -556,8 +532,7 @@ UserLoginRespDataEnumUserStaff $UserLoginRespDataEnumUserStaffFromJson(
   return userLoginRespDataEnumUserStaff;
 }
 
-Map<String, dynamic> $UserLoginRespDataEnumUserStaffToJson(
-    UserLoginRespDataEnumUserStaff entity) {
+Map<String, dynamic> $UserLoginRespDataEnumUserStaffToJson(UserLoginRespDataEnumUserStaff entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
   data['name'] = entity.name;
@@ -575,8 +550,7 @@ extension UserLoginRespDataEnumUserStaffExtension on UserLoginRespDataEnumUserSt
   }
 }
 
-UserLoginRespDataEnumUserStatus $UserLoginRespDataEnumUserStatusFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataEnumUserStatus $UserLoginRespDataEnumUserStatusFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataEnumUserStatus userLoginRespDataEnumUserStatus = UserLoginRespDataEnumUserStatus();
   final String? status = jsonConvert.convert<String>(json['status']);
   if (status != null) {
@@ -593,8 +567,7 @@ UserLoginRespDataEnumUserStatus $UserLoginRespDataEnumUserStatusFromJson(
   return userLoginRespDataEnumUserStatus;
 }
 
-Map<String, dynamic> $UserLoginRespDataEnumUserStatusToJson(
-    UserLoginRespDataEnumUserStatus entity) {
+Map<String, dynamic> $UserLoginRespDataEnumUserStatusToJson(UserLoginRespDataEnumUserStatus entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['status'] = entity.status;
   data['eng_status'] = entity.engStatus;
@@ -615,8 +588,7 @@ extension UserLoginRespDataEnumUserStatusExtension on UserLoginRespDataEnumUserS
   }
 }
 
-UserLoginRespDataEnumUserAlarmMode $UserLoginRespDataEnumUserAlarmModeFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataEnumUserAlarmMode $UserLoginRespDataEnumUserAlarmModeFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataEnumUserAlarmMode userLoginRespDataEnumUserAlarmMode = UserLoginRespDataEnumUserAlarmMode();
   final int? id = jsonConvert.convert<int>(json['id']);
   if (id != null) {
@@ -629,8 +601,7 @@ UserLoginRespDataEnumUserAlarmMode $UserLoginRespDataEnumUserAlarmModeFromJson(
   return userLoginRespDataEnumUserAlarmMode;
 }
 
-Map<String, dynamic> $UserLoginRespDataEnumUserAlarmModeToJson(
-    UserLoginRespDataEnumUserAlarmMode entity) {
+Map<String, dynamic> $UserLoginRespDataEnumUserAlarmModeToJson(UserLoginRespDataEnumUserAlarmMode entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
   data['name'] = entity.name;
@@ -648,23 +619,20 @@ extension UserLoginRespDataEnumUserAlarmModeExtension on UserLoginRespDataEnumUs
   }
 }
 
-UserLoginRespDataUserPic $UserLoginRespDataUserPicFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataUserPic $UserLoginRespDataUserPicFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataUserPic userLoginRespDataUserPic = UserLoginRespDataUserPic();
   final int? fileId = jsonConvert.convert<int>(json['file_id']);
   if (fileId != null) {
     userLoginRespDataUserPic.fileId = fileId;
   }
-  final String? absolutePath = jsonConvert.convert<String>(
-      json['absolute_path']);
+  final String? absolutePath = jsonConvert.convert<String>(json['absolute_path']);
   if (absolutePath != null) {
     userLoginRespDataUserPic.absolutePath = absolutePath;
   }
   return userLoginRespDataUserPic;
 }
 
-Map<String, dynamic> $UserLoginRespDataUserPicToJson(
-    UserLoginRespDataUserPic entity) {
+Map<String, dynamic> $UserLoginRespDataUserPicToJson(UserLoginRespDataUserPic entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['file_id'] = entity.fileId;
   data['absolute_path'] = entity.absolutePath;
@@ -682,8 +650,7 @@ extension UserLoginRespDataUserPicExtension on UserLoginRespDataUserPic {
   }
 }
 
-UserLoginRespDataAuth $UserLoginRespDataAuthFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataAuth $UserLoginRespDataAuthFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataAuth userLoginRespDataAuth = UserLoginRespDataAuth();
   final String? name = jsonConvert.convert<String>(json['name']);
   if (name != null) {
@@ -717,20 +684,15 @@ UserLoginRespDataAuth $UserLoginRespDataAuthFromJson(
   if (pid != null) {
     userLoginRespDataAuth.pid = pid;
   }
-  final List<
-      UserLoginRespDataAuthChildren>? children = (json['children'] as List<
-      dynamic>?)?.map(
-          (e) =>
-      jsonConvert.convert<UserLoginRespDataAuthChildren>(
-          e) as UserLoginRespDataAuthChildren).toList();
+  final List<UserLoginRespDataAuthChildren>? children = (json['children'] as List<dynamic>?)?.map(
+          (e) => jsonConvert.convert<UserLoginRespDataAuthChildren>(e) as UserLoginRespDataAuthChildren).toList();
   if (children != null) {
     userLoginRespDataAuth.children = children;
   }
   return userLoginRespDataAuth;
 }
 
-Map<String, dynamic> $UserLoginRespDataAuthToJson(
-    UserLoginRespDataAuth entity) {
+Map<String, dynamic> $UserLoginRespDataAuthToJson(UserLoginRespDataAuth entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['name'] = entity.name;
   data['type'] = entity.type;
@@ -769,8 +731,7 @@ extension UserLoginRespDataAuthExtension on UserLoginRespDataAuth {
   }
 }
 
-UserLoginRespDataAuthChildren $UserLoginRespDataAuthChildrenFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataAuthChildren $UserLoginRespDataAuthChildrenFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataAuthChildren userLoginRespDataAuthChildren = UserLoginRespDataAuthChildren();
   final String? name = jsonConvert.convert<String>(json['name']);
   if (name != null) {
@@ -804,20 +765,17 @@ UserLoginRespDataAuthChildren $UserLoginRespDataAuthChildrenFromJson(
   if (pid != null) {
     userLoginRespDataAuthChildren.pid = pid;
   }
-  final List<
-      UserLoginRespDataAuthChildrenChildren>? children = (json['children'] as List<
-      dynamic>?)?.map(
-          (e) =>
-      jsonConvert.convert<UserLoginRespDataAuthChildrenChildren>(
-          e) as UserLoginRespDataAuthChildrenChildren).toList();
+  final List<UserLoginRespDataAuthChildrenChildren>? children = (json['children'] as List<dynamic>?)
+      ?.map(
+          (e) => jsonConvert.convert<UserLoginRespDataAuthChildrenChildren>(e) as UserLoginRespDataAuthChildrenChildren)
+      .toList();
   if (children != null) {
     userLoginRespDataAuthChildren.children = children;
   }
   return userLoginRespDataAuthChildren;
 }
 
-Map<String, dynamic> $UserLoginRespDataAuthChildrenToJson(
-    UserLoginRespDataAuthChildren entity) {
+Map<String, dynamic> $UserLoginRespDataAuthChildrenToJson(UserLoginRespDataAuthChildren entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['name'] = entity.name;
   data['type'] = entity.type;
@@ -856,8 +814,7 @@ extension UserLoginRespDataAuthChildrenExtension on UserLoginRespDataAuthChildre
   }
 }
 
-UserLoginRespDataAuthChildrenChildren $UserLoginRespDataAuthChildrenChildrenFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataAuthChildrenChildren $UserLoginRespDataAuthChildrenChildrenFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataAuthChildrenChildren userLoginRespDataAuthChildrenChildren = UserLoginRespDataAuthChildrenChildren();
   final String? name = jsonConvert.convert<String>(json['name']);
   if (name != null) {
@@ -891,12 +848,9 @@ UserLoginRespDataAuthChildrenChildren $UserLoginRespDataAuthChildrenChildrenFrom
   if (pid != null) {
     userLoginRespDataAuthChildrenChildren.pid = pid;
   }
-  final List<
-      UserLoginRespDataAuthChildrenChildrenChildren>? children = (json['children'] as List<
-      dynamic>?)?.map(
+  final List<UserLoginRespDataAuthChildrenChildrenChildren>? children = (json['children'] as List<dynamic>?)?.map(
           (e) =>
-      jsonConvert.convert<
-          UserLoginRespDataAuthChildrenChildrenChildren>(
+      jsonConvert.convert<UserLoginRespDataAuthChildrenChildrenChildren>(
           e) as UserLoginRespDataAuthChildrenChildrenChildren).toList();
   if (children != null) {
     userLoginRespDataAuthChildrenChildren.children = children;
@@ -904,8 +858,7 @@ UserLoginRespDataAuthChildrenChildren $UserLoginRespDataAuthChildrenChildrenFrom
   return userLoginRespDataAuthChildrenChildren;
 }
 
-Map<String, dynamic> $UserLoginRespDataAuthChildrenChildrenToJson(
-    UserLoginRespDataAuthChildrenChildren entity) {
+Map<String, dynamic> $UserLoginRespDataAuthChildrenChildrenToJson(UserLoginRespDataAuthChildrenChildren entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['name'] = entity.name;
   data['type'] = entity.type;
@@ -979,13 +932,12 @@ UserLoginRespDataAuthChildrenChildrenChildren $UserLoginRespDataAuthChildrenChil
   if (pid != null) {
     userLoginRespDataAuthChildrenChildrenChildren.pid = pid;
   }
-  final List<
-      UserLoginRespDataAuthChildrenChildrenChildrenChildren>? children = (json['children'] as List<
-      dynamic>?)?.map(
+  final List<UserLoginRespDataAuthChildrenChildrenChildrenChildren>? children = (json['children'] as List<dynamic>?)
+      ?.map(
           (e) =>
-      jsonConvert.convert<
-          UserLoginRespDataAuthChildrenChildrenChildrenChildren>(
-          e) as UserLoginRespDataAuthChildrenChildrenChildrenChildren).toList();
+      jsonConvert.convert<UserLoginRespDataAuthChildrenChildrenChildrenChildren>(
+          e) as UserLoginRespDataAuthChildrenChildrenChildrenChildren)
+      .toList();
   if (children != null) {
     userLoginRespDataAuthChildrenChildrenChildren.children = children;
   }
@@ -1075,8 +1027,7 @@ UserLoginRespDataAuthChildrenChildrenChildrenChildren $UserLoginRespDataAuthChil
   return userLoginRespDataAuthChildrenChildrenChildrenChildren;
 }
 
-Map<String,
-    dynamic> $UserLoginRespDataAuthChildrenChildrenChildrenChildrenToJson(
+Map<String, dynamic> $UserLoginRespDataAuthChildrenChildrenChildrenChildrenToJson(
     UserLoginRespDataAuthChildrenChildrenChildrenChildren entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['name'] = entity.name;
@@ -1116,20 +1067,17 @@ extension UserLoginRespDataAuthChildrenChildrenChildrenChildrenExtension on User
   }
 }
 
-UserLoginRespDataSettingUser $UserLoginRespDataSettingUserFromJson(
-    Map<String, dynamic> json) {
+UserLoginRespDataSettingUser $UserLoginRespDataSettingUserFromJson(Map<String, dynamic> json) {
   final UserLoginRespDataSettingUser userLoginRespDataSettingUser = UserLoginRespDataSettingUser();
-  final UserLoginRespDataSettingUserInfoUserPushSetting? infoUserPushSetting = jsonConvert
-      .convert<UserLoginRespDataSettingUserInfoUserPushSetting>(
-      json['info_user_push_setting']);
+  final UserLoginRespDataSettingUserInfoUserPushSetting? infoUserPushSetting = jsonConvert.convert<
+      UserLoginRespDataSettingUserInfoUserPushSetting>(json['info_user_push_setting']);
   if (infoUserPushSetting != null) {
     userLoginRespDataSettingUser.infoUserPushSetting = infoUserPushSetting;
   }
   return userLoginRespDataSettingUser;
 }
 
-Map<String, dynamic> $UserLoginRespDataSettingUserToJson(
-    UserLoginRespDataSettingUser entity) {
+Map<String, dynamic> $UserLoginRespDataSettingUserToJson(UserLoginRespDataSettingUser entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['info_user_push_setting'] = entity.infoUserPushSetting.toJson();
   return data;

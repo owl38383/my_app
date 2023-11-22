@@ -1,8 +1,7 @@
 import 'package:my_app/generated/json/base/json_convert_content.dart';
-import 'package:my_app/common/entitys/user_login_request_entity.dart';
+import 'package:my_app/common/entitys/login/user_login_request_entity.dart';
 
-UserLoginRequestEntity $UserLoginRequestEntityFromJson(
-    Map<String, dynamic> json) {
+UserLoginRequestEntity $UserLoginRequestEntityFromJson(Map<String, dynamic> json) {
   final UserLoginRequestEntity userLoginRequestEntity = UserLoginRequestEntity();
   final String? userName = jsonConvert.convert<String>(json['user_name']);
   if (userName != null) {
@@ -15,8 +14,7 @@ UserLoginRequestEntity $UserLoginRequestEntityFromJson(
   return userLoginRequestEntity;
 }
 
-Map<String, dynamic> $UserLoginRequestEntityToJson(
-    UserLoginRequestEntity entity) {
+Map<String, dynamic> $UserLoginRequestEntityToJson(UserLoginRequestEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['user_name'] = entity.userName;
   data['user_pwd'] = entity.userPwd;

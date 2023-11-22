@@ -1,5 +1,4 @@
 import 'package:my_app/common/entitys/entitys.dart';
-import 'package:my_app/common/entitys/user_login_resp_entity.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/global.dart';
 
@@ -8,8 +7,8 @@ class UserAPI {
   static Map<String,dynamic> getCompanyInfo(){
     return {
       'uid': Global.profile.data.userId,
-      'company_id': Global.profile.data.companyId,
-      'company_type': Global.profile.data.companyType,
+      'company_id':  Global.selectCompany['companyId'],
+      'company_type':  Global.selectCompany['companyType'],
     };
   }
   /// 登录
@@ -19,27 +18,27 @@ class UserAPI {
   }
 
   /// 获取用户下单位
-  static Future<Map<String,dynamic>> getCompanyListApi({Map<String,dynamic>? params}) async {
+  static Future<CompanyListEntity> getCompanyListApi({Map<String,dynamic>? params}) async {
     params ??= {};
     params.addAll(getCompanyInfo());
     var response = await HttpUtil().get('/api/api_proxy/company/company_list_by_company_id/', params: params);
-    return response;
+    return CompanyListEntity.fromJson(response);
   }
 
   /// 首页card数据
-  static Future<Map<String,dynamic>> getCountByCared({Map<String,dynamic>? params}) async {
+  static Future<CountByCaredData> getCountByCared({Map<String,dynamic>? params}) async {
     params ??= {};
     params.addAll(getCompanyInfo());
     var response = await HttpUtil().get('/api/api_proxy/statistic/count_by_cared/', params: params);
-    return response['data'];
+    return CountByCaredEntity.fromJson(response).data;
   }
 
   /// 获取我的应用
-  static Future<Map<String,dynamic>> getMyApps({Map<String,dynamic>? params}) async {
+  static Future<MarketMineEntity> getMyApps({Map<String,dynamic>? params}) async {
     params ??= {};
     params.addAll(getCompanyInfo());
     var response = await HttpUtil().get('/app/market/mine/', params: params);
-    return response['data'];
+    return MarketMineEntity.fromJson(response);
   }
 
 }

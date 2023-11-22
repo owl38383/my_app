@@ -15,7 +15,7 @@ String duSHA256(String input) {
 
 Map<String, dynamic> duHttpBefore(String type, Map<String,dynamic> data, String channel) {
   final DeviceInfoUtil deviceInfoUtil = DeviceInfoUtil();
-  print(_generateMD5("method=get&sign_key=Fubang.119*(&uid=9000100000000000101&view_type=web&cc=G1000&cv=FB2.1.1.00_W1.0&ua=WebKit&sign_time=1700401463&sign_random=8437465&imei=1520931947&imsi=222222222&sign_id=10000"));
+  // print(_generateMD5("method=get&sign_key=Fubang.119*(&uid=9000100000000000101&view_type=web&cc=G1000&cv=FB2.1.1.00_W1.0&ua=WebKit&sign_time=1700401463&sign_random=8437465&imei=1520931947&imsi=222222222&sign_id=10000"));
   String signKey = 'Fubang.119*(';
 
   var res = {

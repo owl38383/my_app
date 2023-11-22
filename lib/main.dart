@@ -1,12 +1,19 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/global.dart';
+import 'package:provider/provider.dart';
 
 import 'common/router/router.dart';
-import 'common/router/router.gr.dart';
+import 'global_state.dart';
 
 void main() {
-  Global.init().then((value) => runApp(const MyApp()));
+  Global.init().then((value) => runApp(
+        ChangeNotifierProvider(
+          create: (BuildContext context) {
+            Provider<GlobalState>(create: (_) => GlobalState());
+          },
+          child: const MyApp(),
+        ),
+      ));
 }
 
 class MyApp extends StatefulWidget {
@@ -22,8 +29,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        primaryColor: Colors.blueGrey,
       ),
       routerConfig: _appRouter.config(),
     );

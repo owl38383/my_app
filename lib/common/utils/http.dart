@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:dio/io.dart';
-import 'package:dio/dio.dart';
+
 import 'package:cookie_jar/cookie_jar.dart';
-import 'package:dio_cookie_manager/dio_cookie_manager.dart';
-import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
@@ -223,6 +222,7 @@ class HttpUtil {
   Future get(String path,
       {required Map<String,dynamic> params, Options? options, CancelToken? cancelToken}) async {
     try {
+      print(path);
       var tokenOptions = options ?? getLocalOptions();
       var singResp = duHttpBefore("GET",params,CHANNEL_NUMBER);
       var response = await dio.get(path,

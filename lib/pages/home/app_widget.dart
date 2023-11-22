@@ -20,7 +20,7 @@ Widget buildApps(List<dynamic> data) {
           border: Border.fromBorderSide(Borders.primaryBorder),
           borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角
           boxShadow: [
-            Shadows.primaryShadow,
+            // Shadows.primaryShadow,
           ],
         ),
         child: GridView.builder(

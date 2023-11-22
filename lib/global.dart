@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_app/common/entitys/user_login_resp_entity.dart';
+import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 
@@ -13,6 +13,11 @@ class Global {
 
   /// 是否 release
   static bool get isRelease => const bool.fromEnvironment("dart.vm.product");
+
+  static var selectCompany = {
+    'companyId':'',
+    'companyType':'',
+  };
 
   /// init
   static Future init() async {
@@ -43,7 +48,9 @@ class Global {
   // 持久化 用户信息
   static Future<bool> saveProfile(UserLoginRespEntity userResponse) {
     profile = userResponse;
+    selectCompany['companyId'] = userResponse.data.companyId.toString();
+    selectCompany['companyType'] = userResponse.data.companyType.toString();
     StorageUtil().setString(STORAGE_USER_TOKEN_KEY, userResponse.data.token);
-    return StorageUtil().setJson(STORAGE_USER_PROFILE_KEY, userResponse);
+    return StorageUtil().setJson(STORAGE_USER_PROFILE_KEY, userResponse.data);
   }
 }

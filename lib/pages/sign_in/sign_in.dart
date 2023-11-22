@@ -2,12 +2,13 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/entitys/entitys.dart';
-import 'package:my_app/common/entitys/user_login_resp_entity.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
 import 'package:my_app/common/apis/apis.dart';
 import 'package:my_app/global.dart';
+import 'package:my_app/global_state.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class SignInPage extends StatefulWidget {
@@ -27,17 +28,10 @@ class _SignInPageState extends State<SignInPage> {
   @override
   void initState() {
     super.initState();
-    _emailController.text = '15710013762';
+    _emailController.text = '15710013764';
     _passController.text = '111111';
   }
 
-  // 跳转 注册界面
-  _handleNavSignUp() {
-    Navigator.pushNamed(
-      context,
-      "/sign-up",
-    );
-  }
 
   // 执行登录操作
   _handleSignIn(BuildContext context) async {
@@ -58,13 +52,16 @@ class _SignInPageState extends State<SignInPage> {
     // 保存用户信息
     Global.saveProfile(userProfile);
     // 保存单位信息
-    Map<String,dynamic> companyList = await UserAPI.getCompanyListApi(params: {
+    CompanyListEntity companyList = await UserAPI.getCompanyListApi(params: {
       "unit_type": 'info_company_cared',
     });
-    StorageUtil().setJson(STORAGE_USER_COMPANY_KEY, companyList['data']['list']);
+    StorageUtil().setJson(STORAGE_USER_COMPANY_KEY, companyList.data.toJson());
     toastInfo(msg: '登陆成功');
+    Provider.of<GlobalState>(context, listen: false).updateSelectedCompanyValue(userProfile.data.companyId.toString());
+    Provider.of<GlobalState>(context, listen: false).updateSelectedCompanyName(userProfile.data.companyName);
+
     var router = AutoRouter.of(context);
-    router.pushNamed('/home');
+    router.pushNamed('/main');
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
   }

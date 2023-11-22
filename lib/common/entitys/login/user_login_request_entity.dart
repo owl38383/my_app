@@ -6,9 +6,9 @@ export 'package:my_app/generated/json/user_login_request_entity.g.dart';
 @JsonSerializable()
 class UserLoginRequestEntity {
 	@JSONField(name: "user_name")
-	late String userName;
+	String? userName = '';
 	@JSONField(name: "user_pwd")
-	late String userPwd;
+	String? userPwd = '';
 
 	UserLoginRequestEntity();
 
