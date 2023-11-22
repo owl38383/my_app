@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/router/router.gr.dart';
 
@@ -19,14 +18,14 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     routes = [
-      HomeRoute(),
-      MessageRoute(),
-      ApplicationRoute(),
+      const HomeRoute(),
+      const MessageRoute(),
+      const ApplicationRoute(),
     ];
     items = [
-      BottomNavigationBarItem(label: '首页', icon: Icon(Icons.home)),
-      BottomNavigationBarItem(label: '消息', icon: Icon(Icons.message)),
-      BottomNavigationBarItem(label: '工作台', icon: Icon(Icons.apps)),
+      const BottomNavigationBarItem(label: '首页', icon: Icon(Icons.home)),
+      const BottomNavigationBarItem(label: '消息', icon: Icon(Icons.message)),
+      const BottomNavigationBarItem(label: '工作台', icon: Icon(Icons.apps)),
     ];
   }
 
@@ -52,7 +51,7 @@ class ScaffoldWithTabBar extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(context.topRoute.name),
-            leading: AutoLeadingButton(),
+            leading: const AutoLeadingButton(),
             bottom: TabBar(
               controller: controller,
               tabs: const [

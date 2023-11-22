@@ -1,5 +1,4 @@
 import 'package:auto_route/annotations.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -17,7 +16,7 @@ class _MessagePageState extends State<MessagePage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
       ),
-      body: Text('消息'),
+      body: const Text('消息'),
     );
   }
 }

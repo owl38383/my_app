@@ -1,5 +1,4 @@
 import 'package:easy_refresh/easy_refresh.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
@@ -15,7 +14,7 @@ Widget buildApps(List<dynamic> data) {
         margin: EdgeInsets.only(top: duSetHeight(10)),
         padding: EdgeInsets.all(duSetHeight(5)),
         height: duSetHeight(180),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white, // 设置Card的颜色
           border: Border.fromBorderSide(Borders.primaryBorder),
           borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角

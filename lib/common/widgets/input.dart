@@ -13,7 +13,7 @@ Widget inputTextEdit({
   return Container(
     height: duSetHeight(44),
     margin: EdgeInsets.only(top: duSetHeight(marginTop)),
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: AppColors.secondaryElement,
       borderRadius: Radii.k6pxRadius,
     ),
@@ -22,7 +22,7 @@ Widget inputTextEdit({
       keyboardType: keyboardType,
       decoration: InputDecoration(
         hintText: hintText,
-        contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
+        contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
         border: InputBorder.none,
       ),
       style: TextStyle(

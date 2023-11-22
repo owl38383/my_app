@@ -12,6 +12,6 @@ class DeviceDetailPage extends StatefulWidget {
 class _DeviceDetailPageState extends State<DeviceDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('data'),);
+    return Container(child: const Text('data'),);
   }
 }

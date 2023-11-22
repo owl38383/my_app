@@ -1,8 +1,6 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_app/common/router/router.gr.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 
@@ -57,7 +55,7 @@ class WelcomePage extends StatelessWidget {
       margin: EdgeInsets.only(top: duSetHeight(marginTop)),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: duSetWidth(80),
             height: duSetWidth(80),
             child: Image.asset(
@@ -65,8 +63,8 @@ class WelcomePage extends StatelessWidget {
               fit: BoxFit.none,
             ),
           ),
-          Spacer(),
-          Container(
+          const Spacer(),
+          SizedBox(
             width: duSetWidth(195),
             child: Text(
               intro,
@@ -96,16 +94,16 @@ class WelcomePage extends StatelessWidget {
           // context.router.popUntilRouteWithPath('/sign_in');
           context.navigateNamedTo('/sign_in');
         },
-        child: Text(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryElement,
+          shape: const RoundedRectangleBorder(
+            borderRadius: Radii.k6pxRadius,
+          ),
+        ),
+        child: const Text(
           '开始',
           style: TextStyle(
             color: AppColors.primaryElementText,
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryElement,
-          shape: RoundedRectangleBorder(
-            borderRadius: Radii.k6pxRadius,
           ),
         ),
       ),
@@ -143,7 +141,7 @@ class WelcomePage extends StatelessWidget {
               "You can get Premium to unlock hundreds of publications",
               40,
             ),
-            Spacer(),
+            const Spacer(),
             _buildStartButton(context),
           ],
         ),

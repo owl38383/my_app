@@ -14,13 +14,13 @@ Widget btnFlatButtonWidget({
   String fontName = "Montserrat",
   FontWeight fontWeight = FontWeight.w400,
 }) {
-  return Container(
+  return SizedBox(
     width: duSetWidth(width),
     height: duSetHeight(height),
     child: ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: Radii.k6pxRadius,
           ),
           backgroundColor: gbColor),
@@ -46,13 +46,13 @@ Widget btnFlatButtonBorderOnlyWidget({
   double height = 44,
   required String iconFileName,
 }) {
-  return Container(
+  return SizedBox(
     width: duSetWidth(width),
     height: duSetHeight(height),
     child: ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           side: Borders.primaryBorder,
           borderRadius: Radii.k6pxRadius,
         ),

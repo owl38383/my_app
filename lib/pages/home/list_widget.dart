@@ -1,12 +1,9 @@
-import 'package:easy_refresh/easy_refresh.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/apis/apis.dart';
 import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
-import 'package:my_app/global_state.dart';
 import 'package:my_app/pages/home/data_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -82,9 +79,9 @@ class _buildListState extends State<buildList> with SingleTickerProviderStateMix
     String companyName = item.rtEventConfirm.companyName;
     return Container(
       height: duSetHeight(100),
-      margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.only(left: 5, right: 5),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(left: 5, right: 5),
+      decoration: const BoxDecoration(
         color: Colors.white, // 设置Card的颜色
         border: Border.fromBorderSide(Borders.primaryBorder),
         borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角
@@ -98,8 +95,8 @@ class _buildListState extends State<buildList> with SingleTickerProviderStateMix
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              textLine('$deviceName', fontSize: 14.0),
-              textLine('$companyName', fontSize: 14.0),
+              textLine(deviceName, fontSize: 14.0),
+              textLine(companyName, fontSize: 14.0),
             ],
           ),
           Row(
@@ -122,7 +119,7 @@ class _buildListState extends State<buildList> with SingleTickerProviderStateMix
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  textLine('$enumDeviceStatus'),
+                  textLine(enumDeviceStatus),
                 ],
               )
             ],
@@ -152,7 +149,7 @@ class _buildListState extends State<buildList> with SingleTickerProviderStateMix
         return Container(
           margin: EdgeInsets.only(top: duSetHeight(10)),
           padding: EdgeInsets.all(duSetHeight(5)),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white, // 设置Card的颜色
             border: Border.fromBorderSide(Borders.primaryBorder),
             borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角  `

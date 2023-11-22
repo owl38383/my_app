@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
-import 'package:my_app/common/values/values.dart';
 
 class MyDrawer extends StatefulWidget {
   final CompanyListData companyListData;
@@ -94,7 +92,7 @@ class _MyDrawerState extends State<MyDrawer> {
               info.companyName = widget.userInfoData.companyName;
               widget.onItemSelected(info);
               // 当点击列表项时，调用回调函数并更新 selectedValue
-              await Future.delayed(Duration(milliseconds: 300));
+              await Future.delayed(const Duration(milliseconds: 300));
               Scaffold.of(context).closeDrawer();
             },
           ),
@@ -118,7 +116,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   onTap: () async {
                     // 当点击列表项时，调用回调函数并更新 selectedValue
                     widget.onItemSelected(item.infoCompany);
-                    await Future.delayed(Duration(milliseconds: 300));
+                    await Future.delayed(const Duration(milliseconds: 300));
                     Scaffold.of(context).closeDrawer();
                   },
                 );
@@ -130,8 +128,8 @@ class _MyDrawerState extends State<MyDrawer> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.logout)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
               ],
             ),
           ),

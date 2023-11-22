@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/router/router.gr.dart';
@@ -27,15 +26,15 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('设备信息'),
+        title: const Text('设备信息'),
       ),
       body: Container(
         child: Column(
           children: [
             TextButton(
-              child: Text("跳转"),
+              child: const Text("跳转"),
               onPressed: () {
-                context.pushRoute(WelcomeRoute());
+                context.pushRoute(const WelcomeRoute());
               },
             ),
             Expanded(

@@ -1,9 +1,6 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/router/router.gr.dart';
-import 'package:my_app/pages/main/main.dart';
-import 'package:my_app/pages/welcome/welcome.dart';
 
 Widget zoomInTransition(
     BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {

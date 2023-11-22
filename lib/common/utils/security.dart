@@ -51,7 +51,7 @@ Map<String, dynamic> duHttpBefore(String type, Map<String,dynamic> data, String 
     obj.removeWhere((key, value) => value == null || value == '');
     String href = '';
     data.forEach((index, value) {
-      href += '${'&' + index}=${Uri.encodeComponent(value.toString())}';
+      href += '${'&$index'}=${Uri.encodeComponent(value.toString())}';
     });
     String str = 'method=$type&sign_key=$signKey&$href';
     obj['sign'] = _generateMD5(str);
@@ -59,7 +59,7 @@ Map<String, dynamic> duHttpBefore(String type, Map<String,dynamic> data, String 
   } else {
     String href = '';
     data.forEach((index, value) {
-      href += '${'&' + index}=${Uri.encodeComponent(value.toString())}';
+      href += '${'&$index'}=${Uri.encodeComponent(value.toString())}';
     });
     String str = 'method=$type&sign_key=$signKey&$href';
     obj['sign'] = _generateMD5(str);

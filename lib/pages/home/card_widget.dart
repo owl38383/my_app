@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
@@ -8,7 +7,7 @@ Widget buildCard(CountByCaredData cardInfo) {
   return Container(
     padding: EdgeInsets.all(duSetHeight(5)),
     height: duSetHeight(120),
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.white, // 设置Card的颜色
       border: Border.fromBorderSide(Borders.primaryBorder),
       borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角
@@ -28,9 +27,9 @@ Widget buildCard(CountByCaredData cardInfo) {
                 fit: BoxFit.none,
               ),
               Text(
-                '${cardInfo.deviceTotal}',
+                cardInfo.deviceTotal,
               ),
-              Text(
+              const Text(
                 '设备总数',
               ),
             ],
@@ -39,15 +38,15 @@ Widget buildCard(CountByCaredData cardInfo) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                '${cardInfo.countAlarmDevice}',
+                cardInfo.countAlarmDevice,
               ),
-              Text(
+              const Text(
                 '火警设备',
               ),
               Text(
-                '${cardInfo.countFaultDevice}',
+                cardInfo.countFaultDevice,
               ),
-              Text(
+              const Text(
                 '异常设备',
               ),
             ],
@@ -56,15 +55,15 @@ Widget buildCard(CountByCaredData cardInfo) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                '${cardInfo.countFaultDevice}',
+                cardInfo.countFaultDevice,
               ),
-              Text(
+              const Text(
                 '故障设备',
               ),
               Text(
-                '${cardInfo.offlineDeviceTotal}',
+                cardInfo.offlineDeviceTotal,
               ),
-              Text(
+              const Text(
                 '离线设备',
               ),
             ],

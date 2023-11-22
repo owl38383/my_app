@@ -92,6 +92,7 @@ class HttpUtil {
         };
         // 代理工具会提供一个抓包的自签名证书，会通不过证书校验，所以我们禁用证书校验
         client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+        return null;
       };
     }
 
@@ -210,12 +211,10 @@ class HttpUtil {
   Options? getLocalOptions() {
     Options? options;
     String? token = StorageUtil().getString(STORAGE_USER_TOKEN_KEY);
-    if (token != null) {
-      options = Options(headers: {
-        'Authorization': 'token $token',
-      });
-    }
-    return options;
+    options = Options(headers: {
+      'Authorization': 'token $token',
+    });
+      return options;
   }
 
   /// restful get 操作
@@ -304,6 +303,7 @@ class ErrorEntity implements Exception {
 
   ErrorEntity({required this.code,this.message});
 
+  @override
   String toString() {
     if (message == null) return "Exception";
     return "Exception: code $code, $message";

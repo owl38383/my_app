@@ -1,5 +1,3 @@
-import 'package:auto_route/annotations.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/apis/apis.dart';
@@ -9,7 +7,6 @@ import 'package:my_app/common/values/storage.dart';
 import 'package:my_app/common/widgets/drawer.dart';
 import 'package:my_app/global.dart';
 import 'package:my_app/global_state.dart';
-import 'package:my_app/pages/home/home_provider.dart';
 import 'package:my_app/pages/home/list_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -91,7 +88,7 @@ class _HomePageProvideState extends State<HomePageProvide> {
             title: Text(context.read<DataProvider>().selectedCompanyName),
             actions: [
               IconButton(
-                icon: Icon(Icons.add_box),
+                icon: const Icon(Icons.add_box),
                 onPressed: () {},
               )
             ],
@@ -139,7 +136,7 @@ class _HomePageProvideState extends State<HomePageProvide> {
                 children: <Widget>[
                   buildCard(cardInfo),
                   buildApps(_appList),
-                  buildList(),
+                  const buildList(),
                 ],
               ),
             ),
