@@ -155,7 +155,7 @@ class _buildListState extends State<buildList> with SingleTickerProviderStateMix
           decoration: BoxDecoration(
             color: Colors.white, // 设置Card的颜色
             border: Border.fromBorderSide(Borders.primaryBorder),
-            borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角
+            borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角  `
             boxShadow: [
               // Shadows.primaryShadow,
             ],
