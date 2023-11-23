@@ -63,3 +63,39 @@ Widget btnFlatButtonBorderOnlyWidget({
     ),
   );
 }
+
+/// 应用的图片按钮
+Widget applicationButton(
+    {required String imgUrl,
+    required String title,
+    required String path,
+    required Function(String) onPressTap,
+    double width = 72,
+    double height = 72,
+    String? pathOption}) {
+  return GestureDetector(
+      onTap: () {
+        onPressTap(path);
+      },
+      child: SizedBox(
+        width: duSetWidth(width),
+        height: duSetHeight(height),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.network(
+              imgUrl,
+              fit: BoxFit.cover,
+              width: duSetWidth(50),
+              height: duSetHeight(50),
+            ),
+            Text(
+              title,
+              maxLines: 1, // 设置只能一行显示
+              overflow: TextOverflow.ellipsis, // 超出部分显示省略号
+              style: TextStyle(fontSize: duSetFontSize(12.0)),
+            ),
+          ],
+        ),
+      ));
+}

@@ -37,3 +37,37 @@ Widget inputTextEdit({
     ),
   );
 }
+
+/// 输入框
+Widget inputTextSearch({
+  required TextEditingController controller,
+  TextInputType keyboardType = TextInputType.text,
+  required String hintText,
+  double marginTop = 15,
+}) {
+  return Container(
+    height: duSetHeight(44),
+    margin: EdgeInsets.only(top: duSetHeight(marginTop)),
+    decoration: const BoxDecoration(
+      color: Colors.white,
+      borderRadius: Radii.k6pxRadius,
+    ),
+    child: TextField(
+      controller: controller,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+          hintText: hintText,
+          contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
+          border: InputBorder.none,
+          hintStyle: TextStyle()),
+      style: TextStyle(
+        color: AppColors.primaryText,
+        fontFamily: "Avenir",
+        fontWeight: FontWeight.w400,
+        fontSize: duSetFontSize(14),
+      ),
+      maxLines: 1,
+      autocorrect: false, // 自动纠正
+    ),
+  );
+}

@@ -31,7 +31,6 @@ class _SignInPageState extends State<SignInPage> {
     _passController.text = '111111';
   }
 
-
   // 执行登录操作
   _handleSignIn(BuildContext context) async {
     // if (!duIsEmail(_emailController.value.text)) {
@@ -56,8 +55,10 @@ class _SignInPageState extends State<SignInPage> {
     });
     StorageUtil().setJson(STORAGE_USER_COMPANY_KEY, companyList.data.toJson());
     toastInfo(msg: '登陆成功');
-    Provider.of<GlobalState>(context, listen: false).updateSelectedCompanyValue(userProfile.data.companyId.toString());
-    Provider.of<GlobalState>(context, listen: false).updateSelectedCompanyName(userProfile.data.companyName);
+    Provider.of<GlobalState>(context, listen: false).updateSelectCompanyInfo(
+        userProfile.data.companyId.toString(),
+        userProfile.data.companyType,
+        userProfile.data.companyName);
 
     var router = AutoRouter.of(context);
     router.pushNamed('/main');
@@ -91,7 +92,8 @@ class _SignInPageState extends State<SignInPage> {
                       boxShadow: const [
                         Shadows.primaryShadow,
                       ],
-                      borderRadius: BorderRadius.all(Radius.circular(duSetWidth(76 * 0.5))), // 父容器的50%
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(duSetWidth(76 * 0.5))), // 父容器的50%
                     ),
                     child: Container(),
                   ),
@@ -170,9 +172,7 @@ class _SignInPageState extends State<SignInPage> {
             height: duSetHeight(40),
             margin: EdgeInsets.only(top: duSetHeight(20)),
             child: TextButton(
-              onPressed: () => {
-                context.router.pop()
-              },
+              onPressed: () => {context.router.pop()},
               child: Text(
                 "忘记密码?",
                 textAlign: TextAlign.center,

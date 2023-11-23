@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
 class GlobalState extends ChangeNotifier {
-  String selectedValue = '';
-  String selectedValueName = '';
+  late Map companyInfo = {
+    "companyId": '',
+    "companyType": '',
+    "companyName": '',
+  };
 
-  void updateSelectedCompanyValue(String newValue) {
-    selectedValue = newValue;
+  void updateSelectCompanyInfo(
+      String companyId, String companyType, String companyName) {
+    companyInfo = {
+      "companyId": companyId,
+      "companyType": companyType,
+      "companyName": companyName,
+    };
     notifyListeners(); // 通知监听器状态已更改
   }
 
-  void updateSelectedCompanyName(String newValue) {
-    selectedValueName = newValue;
-    notifyListeners(); // 通知监听器状态已更改
+  String getCompanyId() {
+    return companyInfo['companyId'];
+  }
+
+  String getCompanyName() {
+    return companyInfo['companyName'];
   }
 }

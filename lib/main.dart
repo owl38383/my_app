@@ -6,11 +6,12 @@ import 'common/router/router.dart';
 import 'global_state.dart';
 
 void main() {
+  Provider.debugCheckInvalidValueType = null;
   Global.init().then((value) => runApp(
-        ChangeNotifierProvider(
-          create: (BuildContext context) {
-            Provider<GlobalState>(create: (_) => GlobalState());
-          },
+        MultiProvider(
+          providers: [
+            Provider<GlobalState>(create: (_) => GlobalState()),
+          ],
           child: const MyApp(),
         ),
       ));
@@ -32,6 +33,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blueGrey,
+        scaffoldBackgroundColor: Color.fromARGB(255, 231, 226, 226),
       ),
       routerConfig: _appRouter.config(),
     );

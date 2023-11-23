@@ -47,3 +47,20 @@ provider: ^6.1.1
 ListView
 在flutter开发中，：初始加载数据时，偏离顶部一定距离或者说顶部没有对齐：
 padding: const EdgeInsets.only(top: 0),
+
+在嵌套 ListView 时，需要注意内层 ListView 的 shrinkWrap 属性必须为 true，physics 属性必须为 NeverScrollableScrollPhysics。
+
+## 获取屏幕宽度
+MediaQuery.of(context).size.width
+
+
+$env:PUB_HOSTED_URL = "https://pub.flutter-io.cn"
+$env:FLUTTER_STORAGE_BASE_URL = "https://storage.flutter-io.cn"
+
+
+set PUB_HOSTED_URL=https://pub.flutter-io.cn
+set FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
+
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn

@@ -15,8 +15,8 @@ class Global {
   static bool get isRelease => const bool.fromEnvironment("dart.vm.product");
 
   static var selectCompany = {
-    'companyId':'',
-    'companyType':'',
+    'companyId': '',
+    'companyType': '',
   };
 
   /// init

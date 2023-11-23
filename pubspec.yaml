@@ -55,6 +55,7 @@ dependencies:
   easy_refresh: ^3.3.2+4
   qr_code_scanner: ^1.0.1
   amap_flutter_map: ^3.0.0
+  webview_flutter: ^4.4.2
 
 dev_dependencies:
   flutter_test:

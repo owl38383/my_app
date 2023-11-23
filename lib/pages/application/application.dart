@@ -1,9 +1,12 @@
-import 'dart:io';
-
-import 'package:auto_route/annotations.dart';
-import 'package:flutter/foundation.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:my_app/common/apis/apis.dart';
+import 'package:my_app/common/entitys/entitys.dart';
+import 'package:my_app/common/router/router.gr.dart';
+import 'package:my_app/common/utils/utils.dart';
+import 'package:my_app/common/values/values.dart';
+import 'package:my_app/common/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class ApplicationPage extends StatefulWidget {
@@ -14,185 +17,156 @@ class ApplicationPage extends StatefulWidget {
 }
 
 class _ApplicationPageState extends State<ApplicationPage> {
+  TextEditingController textEditingController = TextEditingController();
+  MarketMineEntity _appMap = MarketMineEntity();
+  List<MarketMineDataTicker> ticker = [];
+  List<MarketMineDataGroups> groups = [];
+  int currentIndex = 0;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const QRViewExample(),
-            ));
-          },
-          child: const Text('qrView'),
-        ),
-      ),
-    );
-  }
-}
-
-
-class QRViewExample extends StatefulWidget {
-  const QRViewExample({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _QRViewExampleState();
-}
-
-class _QRViewExampleState extends State<QRViewExample> {
-  Barcode? result;
-  QRViewController? controller;
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-
-  // In order to get hot reload to work we need to pause the camera if the platform
-  // is android, or resume the camera if the platform is iOS.
-  @override
-  void reassemble() {
-    super.reassemble();
-    if (Platform.isAndroid) {
-      controller!.pauseCamera();
-    }
-    controller!.resumeCamera();
+  void initState() {
+    super.initState();
+    _loadAll();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(flex: 4, child: _buildQrView(context)),
-          Expanded(
-            flex: 1,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  if (result != null)
-                    Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
-                  else
-                    const Text('Scan a code'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data!)}');
-                                } else {
-                                  return const Text('loading');
-                                }
-                              },
-                            )),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.pauseCamera();
-                          },
-                          child: const Text('pause',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await controller?.resumeCamera();
-                          },
-                          child: const Text('resume',
-                              style: TextStyle(fontSize: 20)),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildQrView(BuildContext context) {
-    // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
-        MediaQuery.of(context).size.height < 400)
-        ? 150.0
-        : 300.0;
-    // To ensure the Scanner view is properly sizes after rotation
-    // we need to listen for Flutter SizeChanged notification and update controller
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: _onQRViewCreated,
-      overlay: QrScannerOverlayShape(
-          borderColor: Colors.red,
-          borderRadius: 10,
-          borderLength: 30,
-          borderWidth: 10,
-          cutOutSize: scanArea),
-      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
-    );
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
+  _loadAll() async {
+    _appMap = await UserAPI.getMyApps();
     setState(() {
-      this.controller = controller;
-    });
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
+      ticker = _appMap.data.ticker;
+      groups = _appMap.data.groups;
+      groups.sort((a, b) => a.groupId.compareTo(b.groupId));
     });
   }
 
-  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    if (!p) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('no Permission')),
+  _toApplication(BuildContext context, String path) {
+    context.router.push(WebViewRoute(url: 'https://www.mbad.top'));
+  }
+
+  Widget _buildBanner() {
+    if (ticker.length == 0) {
+      // 如果ticker列表为空，显示一些占位或提示信息
+      return Center(
+        child: Text('No data available'),
+      );
+    } else {
+      // 如果有数据，构建PageView
+      return Container(
+        margin: EdgeInsets.only(top: 5),
+        height: duSetHeight(180), // 设置一个明确的高度
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.fromBorderSide(Borders.primaryBorder),
+          borderRadius: Radii.k6pxRadius,
+        ),
+        child: PageView.builder(
+          itemCount: ticker.length,
+          itemBuilder: (context, index) {
+            String url = ticker[index].imgFilePath;
+            return Container(
+              margin: EdgeInsets.all(10),
+              child: Image.network(
+                url,
+                height: duSetHeight(180),
+                fit: BoxFit.cover,
+                scale: 1.0,
+              ),
+            );
+          },
+        ),
       );
     }
   }
 
+  Widget _buildApplicatonGroup() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: groups.map((group) {
+        if (group.apps.length > 0) {
+          return Container(
+            margin: EdgeInsets.only(top: 5),
+            padding: EdgeInsets.all(5),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border.fromBorderSide(Borders.primaryBorder),
+              borderRadius: Radii.k6pxRadius,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  group.groupName,
+                  style: TextStyle(
+                    fontSize: duSetFontSize(12),
+                  ),
+                ),
+                SizedBox(
+                  height: duSetHeight(20),
+                ),
+                _buildApplicationList(apps: group.apps),
+              ],
+            ),
+          );
+        } else {
+          return Container();
+        }
+      }).toList(),
+    );
+  }
+
+  Widget _buildApplicationList({
+    required List<dynamic> apps,
+  }) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        double parentWidth = constraints.maxWidth;
+
+        return Container(
+          width: double.infinity, // 或者直接使用 parentWidth
+          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          child: Wrap(
+            alignment: WrapAlignment.start,
+            spacing: (parentWidth - 20.0) / 4 - 72, // ping
+            runSpacing: 8.0, // 垂直间距（行间距）
+            children: apps.map((e) {
+              return applicationButton(
+                imgUrl: e['app_icon'] ?? '',
+                title: e['app_name'] ?? '',
+                path: e['navigation'] ?? '',
+                onPressTap: (String string) {
+                  _toApplication(context, string);
+                },
+              );
+            }).toList(),
+          ),
+        );
+      },
+    );
+  }
+
   @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: Text('工作台'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(),
+        child: ListView(
+          children: [
+            inputTextSearch(
+              controller: textEditingController,
+              hintText: '搜索',
+              marginTop: 5,
+            ),
+            _buildBanner(),
+            _buildApplicatonGroup(),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,62 +1,70 @@
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/common/apis/apis.dart';
+import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
+import 'package:my_app/common/widgets/widgets.dart';
 
-Widget buildApps(List<dynamic> data) {
-  return EasyRefresh.builder(
-    onRefresh: () async {
-      return IndicatorResult.success;
-    },
-    onLoad: () async {},
-    childBuilder: (context, physics) {
-      return Container(
-        margin: EdgeInsets.only(top: duSetHeight(10)),
-        padding: EdgeInsets.all(duSetHeight(5)),
-        height: duSetHeight(180),
-        decoration: const BoxDecoration(
-          color: Colors.white, // 设置Card的颜色
-          border: Border.fromBorderSide(Borders.primaryBorder),
-          borderRadius: Radii.k6pxRadius, // 可以根据需要调整圆角
-          boxShadow: [
-            // Shadows.primaryShadow,
-          ],
-        ),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4, // 指定列数
-            crossAxisSpacing: duSetHeight(10.0), // 列之间的间距
-            mainAxisSpacing: duSetWidth(10.0), // 行之间的间距
-          ),
-          itemCount: data.length,
-          itemBuilder: (BuildContext context, int index) {
-            return buildGridItem(data[index]);
-          },
-        ),
-      );
-    },
-  );
+class BuildApps extends StatefulWidget {
+  BuildApps({super.key});
+
+  @override
+  State<BuildApps> createState() => _BuildAppsState();
 }
 
-Widget buildGridItem(dynamic item) {
-  // 根据需要自定义每个网格项的显示
-  return Card(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.network(
-          item['app_icon'],
-          width: 40.0, // 图片宽度
-          height: 40.0, // 图片高度
-          fit: BoxFit.cover,
+class _BuildAppsState extends State<BuildApps> {
+  late List<dynamic> _appList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAll();
+  }
+
+  _loadAll() async {
+    MarketMineEntity _appMap = await UserAPI.getMyApps();
+    for (var item in _appMap.data.groups) {
+      _appList.addAll(item.apps);
+    }
+    _appList = _appList.toSet().toList();
+    setState(() {});
+  }
+
+  Widget buildGridItem(dynamic item) {
+    // 根据需要自定义每个网格项的显示
+    return applicationButton(
+        imgUrl: item['app_icon'],
+        title: item['app_name'],
+        path: item['navigation'],
+        onPressTap: (String string) {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: duSetHeight(5)),
+      padding: EdgeInsets.all(5), // Adjust as needed
+      height: duSetHeight(180), // Adjust as needed
+      width: double.infinity, // Expanded width
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.fromBorderSide(Borders.primaryBorder),
+        borderRadius: Radii.k6pxRadius,
+        boxShadow: [],
+      ),
+      child: GridView.builder(
+        scrollDirection: Axis.vertical,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          crossAxisSpacing: 10.0,
+          mainAxisSpacing: 10.0,
         ),
-        Text(
-          '${item['app_name']}',
-          maxLines: 1, // 设置只能一行显示
-          overflow: TextOverflow.ellipsis, // 超出部分显示省略号
-          style: TextStyle(fontSize: duSetFontSize(12.0)),
-        ),
-      ],
-    ),
-  );
+        itemCount: _appList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return buildGridItem(_appList[index]);
+        },
+      ),
+    );
+  }
 }
