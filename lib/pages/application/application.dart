@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/apis/apis.dart';
@@ -6,6 +8,7 @@ import 'package:my_app/common/router/router.gr.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
+import 'package:my_app/global.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
@@ -38,7 +41,13 @@ class _ApplicationPageState extends State<ApplicationPage> {
   }
 
   _toApplication(BuildContext context, String path) {
-    context.router.push(WebViewRoute(url: 'https://www.mbad.top'));
+    if (path.startsWith('http')) {
+      path = path.replaceAll('81.70.154.161', '47.95.1.44');
+      // print(url);
+      context.router.push(WebViewRoute(url: path, isReplace: true));
+    } else {
+      context.router.pushNamed(Uri.encodeFull(duGetRouterName(path)));
+    }
   }
 
   Widget _buildBanner() {
@@ -63,12 +72,24 @@ class _ApplicationPageState extends State<ApplicationPage> {
             String url = ticker[index].imgFilePath;
             return Container(
               margin: EdgeInsets.all(10),
-              child: Image.network(
-                url,
-                height: duSetHeight(180),
-                fit: BoxFit.cover,
-                scale: 1.0,
-              ),
+              child: Image.network(url,
+                  height: duSetHeight(180),
+                  fit: BoxFit.cover,
+                  scale: 1.0, loadingBuilder: (BuildContext context,
+                      Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              (loadingProgress.expectedTotalBytes ?? 1)
+                          : null,
+                    ),
+                  );
+                }
+              }),
             );
           },
         ),

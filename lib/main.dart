@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_app/global.dart';
 import 'package:provider/provider.dart';
 
 import 'common/router/router.dart';
-import 'global_state.dart';
+import 'common/provider/global_state.dart';
 
 void main() {
   Provider.debugCheckInvalidValueType = null;
@@ -29,6 +30,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // 高度去掉 顶部、底部 导航
+    ScreenUtil.init(
+      context,
+      designSize: const Size(375, 812 - 44 - 34),
+      minTextAdapt: true,
+      splitScreenMode: true,
+    );
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

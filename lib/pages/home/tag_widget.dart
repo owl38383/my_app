@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
-import 'package:my_app/pages/home/provider/data_provider.dart';
+import 'package:my_app/common/provider/data_provider.dart';
 import 'package:provider/provider.dart';
 
 class EnumConfirmType {

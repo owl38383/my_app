@@ -52,7 +52,7 @@ abstract class $AppRouter extends _i11.RootStackRouter {
     IndexRoute.name: (routeData) {
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.IndexPage(),
+        child: _i5.IndexPage(),
       );
     },
     MainRoute.name: (routeData) {
@@ -77,7 +77,10 @@ abstract class $AppRouter extends _i11.RootStackRouter {
       final args = routeData.argsAs<WebViewRouteArgs>();
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i9.WebViewPage(url: args.url),
+        child: _i9.WebViewPage(
+          url: args.url,
+          isReplace: args.isReplace,
+        ),
       );
     },
     WelcomeRoute.name: (routeData) {
@@ -206,10 +209,14 @@ class SignInRoute extends _i11.PageRouteInfo<void> {
 class WebViewRoute extends _i11.PageRouteInfo<WebViewRouteArgs> {
   WebViewRoute({
     required String url,
+    required bool isReplace,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           WebViewRoute.name,
-          args: WebViewRouteArgs(url: url),
+          args: WebViewRouteArgs(
+            url: url,
+            isReplace: isReplace,
+          ),
           initialChildren: children,
         );
 
@@ -220,13 +227,18 @@ class WebViewRoute extends _i11.PageRouteInfo<WebViewRouteArgs> {
 }
 
 class WebViewRouteArgs {
-  const WebViewRouteArgs({required this.url});
+  const WebViewRouteArgs({
+    required this.url,
+    required this.isReplace,
+  });
 
   final String url;
 
+  final bool isReplace;
+
   @override
   String toString() {
-    return 'WebViewRouteArgs{url: $url}';
+    return 'WebViewRouteArgs{url: $url, isReplace: $isReplace}';
   }
 }
 

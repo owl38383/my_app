@@ -6,7 +6,7 @@ import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
 import 'package:my_app/common/apis/apis.dart';
 import 'package:my_app/global.dart';
-import 'package:my_app/global_state.dart';
+import 'package:my_app/common/provider/global_state.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
@@ -49,19 +49,8 @@ class _SignInPageState extends State<SignInPage> {
     UserLoginRespEntity userProfile = await UserAPI.login(params: params);
     // 保存用户信息
     Global.saveProfile(userProfile);
-    // 保存单位信息
-    CompanyListEntity companyList = await UserAPI.getCompanyListApi(params: {
-      "unit_type": 'info_company_cared',
-    });
-    StorageUtil().setJson(STORAGE_USER_COMPANY_KEY, companyList.data.toJson());
     toastInfo(msg: '登陆成功');
-    Provider.of<GlobalState>(context, listen: false).updateSelectCompanyInfo(
-        userProfile.data.companyId.toString(),
-        userProfile.data.companyType,
-        userProfile.data.companyName);
-
-    var router = AutoRouter.of(context);
-    router.pushNamed('/main');
+    context.router.pushNamed('/main');
     // 写本地 access_token , 不写全局，业务：离线登录
     // 全局数据 gUser
   }

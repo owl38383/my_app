@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/global.dart';
@@ -6,7 +8,7 @@ import 'package:my_app/global.dart';
 class EventAPI {
   static Map<String, dynamic> getCompanyInfo() {
     return {
-      'uid': Global.profile.data.userId,
+      'uid': Global.profile.userId,
       'company_id': Global.selectCompany['companyId'],
       'company_type': Global.selectCompany['companyType'],
       'id': Global.selectCompany['companyId'],
@@ -15,13 +17,12 @@ class EventAPI {
   }
 
   /// 获取事件列表
-  static Future<EventListHomePageEntity> getEventListHomePage(
+  static Future<ApiResponseEntity<EventListHomePageData>> getEventListHomePage(
       {Map<String, dynamic>? params}) async {
     params ??= {};
     params.addAll(getCompanyInfo());
-    print(params);
     var response = await HttpUtil()
         .get('/api/api_proxy/event/event_list_home_page/', params: params);
-    return EventListHomePageEntity.fromJson(response);
+    return ApiResponseEntity.fromJson(response);
   }
 }

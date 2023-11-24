@@ -5,10 +5,8 @@ import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 
 class DataProvider extends ChangeNotifier {
-  CompanyListData _companyListData = CompanyListData();
   CountByCaredData _cardInfo = CountByCaredData();
 
-  CompanyListData get companyListData => _companyListData;
   CountByCaredData get cardInfo => _cardInfo;
 
   void refresh() async {
@@ -18,9 +16,6 @@ class DataProvider extends ChangeNotifier {
   }
 
   Future<void> fetchData() async {
-    _companyListData = CompanyListData.fromJson(
-      StorageUtil().getJson(STORAGE_USER_COMPANY_KEY),
-    );
     _cardInfo = await UserAPI.getCountByCared();
   }
 }
@@ -32,7 +27,7 @@ class EventProvider extends ChangeNotifier {
   late String _statusCategory;
   List<EventListHomePageDataList> eventListHomePageDataList = [];
 
-  void changestatusCategory(String statusCategory) {
+  void changeStatusCategory(String statusCategory) {
     if (statusCategory.isNotEmpty) {
       _statusCategory = statusCategory;
       refresh();
@@ -40,6 +35,7 @@ class EventProvider extends ChangeNotifier {
   }
 
   void refresh() async {
+    pageNo = 0;
     eventListHomePageDataList = await fetchData();
     // 通知监听器（观察者）状态已经改变
     notifyListeners();
@@ -52,14 +48,36 @@ class EventProvider extends ChangeNotifier {
       'enum_confirm_type': '0',
       'status_category': _statusCategory,
     };
-    EventListHomePageEntity event =
+    ApiResponseEntity<EventListHomePageData> event =
         await EventAPI.getEventListHomePage(params: params);
-    return event.data.list;
+    return event.data?.list ?? [];
   }
 
   Future<void> loadMore() async {
     pageNo++;
     eventListHomePageDataList.addAll(await fetchData());
     notifyListeners();
+  }
+}
+
+
+
+class CompanyListProvider extends ChangeNotifier {
+
+  CompanyListData companyListData = CompanyListData();
+
+
+  void refresh() async {
+    companyListData = await fetchData();
+    // 通知监听器（观察者）状态已经改变
+    notifyListeners();
+  }
+
+  Future<CompanyListData> fetchData() async {
+    // 保存单位信息
+    CompanyListEntity companyList = await UserAPI.getCompanyListApi(params: {
+      "unit_type": 'info_company_cared',
+    });
+    return companyList.data;
   }
 }

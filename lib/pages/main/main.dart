@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/router/router.gr.dart';
+import 'package:my_app/pages/sign_in/sign_in.dart';
 
 @RoutePage()
 class MainPage extends StatefulWidget {
@@ -33,6 +34,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     // return ScaffoldWithTabBar(items, routes);
     return ScaffoldWithNavbar(items, routes);
+    // return SignInPage();
   }
 }
 

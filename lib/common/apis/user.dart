@@ -6,7 +6,7 @@ import 'package:my_app/global.dart';
 class UserAPI {
   static Map<String, dynamic> getCompanyInfo() {
     return {
-      'uid': Global.profile.data.userId,
+      'uid': Global.profile.userId,
       'company_id': Global.selectCompany['companyId'],
       'company_type': Global.selectCompany['companyType'],
     };

@@ -1,6 +1,9 @@
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/entitys/entitys.dart';
+import 'package:my_app/common/provider/data_provider.dart';
 import 'package:my_app/common/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class MyDrawer extends StatefulWidget {
   final CompanyListData companyListData;
@@ -8,12 +11,17 @@ class MyDrawer extends StatefulWidget {
   final String? selectedValue;
   final Function(CompanyListDataListInfoCompany) onItemSelected; // 新增的回调函数
 
-  const MyDrawer({
+  final VoidCallback? onPreessedSetting;
+  final VoidCallback? onPreessedLogout;
+
+  MyDrawer({
     Key? key,
     required this.companyListData,
     this.selectedValue,
     required this.userInfoData,
     required this.onItemSelected, // 新增的回调函数
+    this.onPreessedSetting, // 新增的回调函数
+    this.onPreessedLogout, // 新增的回调函数
   }) : super(key: key);
 
   @override
@@ -72,17 +80,22 @@ class _MyDrawerState extends State<MyDrawer> {
   }
 
   Widget _buildList() {
-    return ListView.builder(
-      padding: const EdgeInsets.only(top: 0),
-      itemCount: widget.companyListData.list.length,
-      itemBuilder: (context, index) {
-        var item = widget.companyListData.list[index];
-        return _buildListItem(item);
+    return EasyRefresh(
+      onRefresh: (){
+        // 请求单位数据
+        Provider.of<CompanyListProvider>(context, listen: false).refresh();
       },
+      child: ListView.builder(
+        padding: const EdgeInsets.only(top: 0),
+        itemCount: widget.companyListData.list.length,
+        itemBuilder: (context, index) {
+          return _buildListItem(widget.companyListData.list[index]);
+        },
+      ),
     );
   }
 
-  Widget _buildListItem(item) {
+  Widget _buildListItem(CompanyListDataList item) {
     return ListTile(
       title: Text(item.infoCompany.companyName),
       leading: Icon(
@@ -92,8 +105,9 @@ class _MyDrawerState extends State<MyDrawer> {
             : null,
       ),
       tileColor: item.infoCompany.companyId == widget.selectedValue
-          ? Colors.white // 选中项的背景颜色
+          ? Colors.grey.shade500 // 选中项的背景颜色
           : null,
+      subtitle: Text(item.infoCompany.thingType),
       onTap: () async {
         // 当点击列表项时，调用回调函数并更新 selectedValue
         widget.onItemSelected(item.infoCompany);
@@ -115,16 +129,15 @@ class _MyDrawerState extends State<MyDrawer> {
             title: Text(widget.userInfoData.companyName),
             leading: Icon(
               Icons.home_rounded,
-              color: widget.userInfoData.companyId == widget.selectedValue
+              color: widget.userInfoData.companyId.toString() == widget.selectedValue
                   ? Colors.blue // 选中项的背景颜色
                   : null,
             ),
-            tileColor: widget.userInfoData.companyId == widget.selectedValue
-                ? Colors.white // 选中项的背景颜色
+            tileColor: widget.userInfoData.companyId.toString() == widget.selectedValue
+                ? Colors.grey.shade500 // 选中项的背景颜色
                 : null,
             onTap: () async {
-              CompanyListDataListInfoCompany info =
-                  CompanyListDataListInfoCompany();
+              CompanyListDataListInfoCompany info = CompanyListDataListInfoCompany();
               info.companyId = widget.userInfoData.companyId.toString();
               info.thingType = widget.userInfoData.companyType.toString();
               info.companyName = widget.userInfoData.companyName;
@@ -142,8 +155,8 @@ class _MyDrawerState extends State<MyDrawer> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.logout)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+                IconButton(onPressed: widget.onPreessedLogout, icon: const Icon(Icons.logout)),
+                IconButton(onPressed: widget.onPreessedSetting, icon: const Icon(Icons.settings)),
               ],
             ),
           ),

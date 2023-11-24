@@ -4,7 +4,7 @@ import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
-import 'package:my_app/pages/home/provider/data_provider.dart';
+import 'package:my_app/common/provider/data_provider.dart';
 import 'package:provider/provider.dart';
 
 class BuildEventList extends StatefulWidget {
@@ -19,10 +19,8 @@ class _BuildEventListState extends State<BuildEventList> {
     String thingId =
         (item.location.simpleId ?? item.rtEventConfirm.thingId).toString();
     String enumDeviceStatus = (item.rtEventConfirm.enumDeviceStatus.name);
-    String location = item.location.buildingName +
-        item.location.floorName +
-        item.location.areaName +
-        item.location.specific;
+    String location =
+        "${item.location.buildingName} ${item.location.floorName} ${item.location.areaName} ${item.location.specific}";
     String acceptTime = item.rtEventConfirm.acceptTime;
     String deviceName = item.location.deviceName;
     String companyName = item.rtEventConfirm.companyName;

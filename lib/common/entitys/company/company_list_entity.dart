@@ -25,8 +25,8 @@ class CompanyListEntity {
 
 @JsonSerializable()
 class CompanyListData {
-	late int total = 0;
-	late List<CompanyListDataList> list = [];
+	int total = 0;
+	List<CompanyListDataList> list = [];
 
 	CompanyListData();
 

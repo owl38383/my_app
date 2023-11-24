@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/global.dart';
 
 class GlobalState extends ChangeNotifier {
   late Map companyInfo = {
@@ -14,6 +15,7 @@ class GlobalState extends ChangeNotifier {
       "companyType": companyType,
       "companyName": companyName,
     };
+    Global.selectCompany = companyInfo;
     notifyListeners(); // 通知监听器状态已更改
   }
 
