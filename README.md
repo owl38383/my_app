@@ -53,6 +53,20 @@ padding: const EdgeInsets.only(top: 0),
 ## 获取屏幕宽度
 MediaQuery.of(context).size.width
 
+## flutter 改变数据，showDialog对话框内的UI不更新
+(context as Element).markNeedsBuild();
+
+###  滚动到最后一行
+scrollToBottom() {
+WidgetsBinding.instance.addPostFrameCallback((_) {
+_scrollController.animateTo(
+_scrollController.position.maxScrollExtent,
+duration: Duration(milliseconds: 300),
+curve: Curves.easeOut,
+);
+});
+}
+
 
 $env:PUB_HOSTED_URL = "https://pub.flutter-io.cn"
 $env:FLUTTER_STORAGE_BASE_URL = "https://storage.flutter-io.cn"

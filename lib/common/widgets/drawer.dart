@@ -29,6 +29,13 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  @override
+  void initState() {
+    super.initState();
+    // 请求单位数据
+    Provider.of<CompanyListProvider>(context, listen: false).refresh();
+  }
+
   Widget _buildHeader() {
     return Container(
       margin: EdgeInsets.only(top: duSetHeight(44), left: duSetWidth(5)),
@@ -81,7 +88,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
   Widget _buildList() {
     return EasyRefresh(
-      onRefresh: (){
+      onRefresh: () {
         // 请求单位数据
         Provider.of<CompanyListProvider>(context, listen: false).refresh();
       },
@@ -129,15 +136,18 @@ class _MyDrawerState extends State<MyDrawer> {
             title: Text(widget.userInfoData.companyName),
             leading: Icon(
               Icons.home_rounded,
-              color: widget.userInfoData.companyId.toString() == widget.selectedValue
+              color: widget.userInfoData.companyId.toString() ==
+                      widget.selectedValue
                   ? Colors.blue // 选中项的背景颜色
                   : null,
             ),
-            tileColor: widget.userInfoData.companyId.toString() == widget.selectedValue
-                ? Colors.grey.shade500 // 选中项的背景颜色
-                : null,
+            tileColor:
+                widget.userInfoData.companyId.toString() == widget.selectedValue
+                    ? Colors.grey.shade500 // 选中项的背景颜色
+                    : null,
             onTap: () async {
-              CompanyListDataListInfoCompany info = CompanyListDataListInfoCompany();
+              CompanyListDataListInfoCompany info =
+                  CompanyListDataListInfoCompany();
               info.companyId = widget.userInfoData.companyId.toString();
               info.thingType = widget.userInfoData.companyType.toString();
               info.companyName = widget.userInfoData.companyName;
@@ -155,8 +165,12 @@ class _MyDrawerState extends State<MyDrawer> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: widget.onPreessedLogout, icon: const Icon(Icons.logout)),
-                IconButton(onPressed: widget.onPreessedSetting, icon: const Icon(Icons.settings)),
+                IconButton(
+                    onPressed: widget.onPreessedLogout,
+                    icon: const Icon(Icons.logout)),
+                IconButton(
+                    onPressed: widget.onPreessedSetting,
+                    icon: const Icon(Icons.settings)),
               ],
             ),
           ),

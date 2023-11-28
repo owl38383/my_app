@@ -24,7 +24,7 @@ class EventProvider extends ChangeNotifier {
   int pageNo = 0;
   int pageSize = 10;
   int enumConfirmType = 0;
-  late String _statusCategory;
+  String _statusCategory = '';
   List<EventListHomePageDataList> eventListHomePageDataList = [];
 
   void changeStatusCategory(String statusCategory) {
@@ -36,9 +36,11 @@ class EventProvider extends ChangeNotifier {
 
   void refresh() async {
     pageNo = 0;
-    eventListHomePageDataList = await fetchData();
-    // 通知监听器（观察者）状态已经改变
-    notifyListeners();
+    if (_statusCategory.isNotEmpty) {
+      eventListHomePageDataList = await fetchData();
+      // 通知监听器（观察者）状态已经改变
+      notifyListeners();
+    }
   }
 
   Future<List<EventListHomePageDataList>> fetchData() async {

@@ -33,27 +33,37 @@ class _HomePageProvideState extends State<HomePageProvide> {
   @override
   void initState() {
     super.initState();
-    // 请求单位数据
-    Provider.of<CompanyListProvider>(context, listen: false).refresh();
+    // 更新所选单位
+    if (Global.selectCompany['companyId'].isEmpty) {
+      Provider.of<GlobalState>(context, listen: false).updateSelectCompanyInfo(
+        Global.profile.companyId.toString(),
+        Global.profile.companyType.toString(),
+        Global.profile.companyName.toString(),
+      );
+    }
     // 刷新卡片
     _controller = EasyRefreshController(
       controlFinishRefresh: true,
       controlFinishLoad: true,
     );
+    _loadALL();
   }
 
   _loadALL() async {
-    _userLoginRespEntity = UserLoginRespData.fromJson(StorageUtil().getJson(STORAGE_USER_PROFILE_KEY));
+    _userLoginRespEntity = UserLoginRespData.fromJson(
+        StorageUtil().getJson(STORAGE_USER_PROFILE_KEY));
     // 刷新数据
     Provider.of<DataProvider>(context, listen: false).refresh();
     Provider.of<EventProvider>(context, listen: false).refresh();
     setState(() {});
   }
+
   // 退出登录
   void _duLogout() {
     Global.removeProfile();
     context.router.replaceNamed('/sign_in');
   }
+
   // 跳转到用户设置
   void _duSetting() {
     context.router.pushNamed('/account');
@@ -84,7 +94,7 @@ class _HomePageProvideState extends State<HomePageProvide> {
             );
           },
         ),
-        title: Text(context.watch<GlobalState>().getCompanyName()),
+        title: Text(context.watch<GlobalState>().companyName),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -102,14 +112,15 @@ class _HomePageProvideState extends State<HomePageProvide> {
           Global.selectCompany['companyType'] = value.thingType;
           // 状态通知
           Provider.of<GlobalState>(context, listen: false)
-              .updateSelectCompanyInfo(value.companyId, value.thingType, value.companyName);
+              .updateSelectCompanyInfo(
+                  value.companyId, value.thingType, value.companyName);
           _loadALL();
         },
         onPreessedLogout: _duLogout,
         onPreessedSetting: _duSetting,
       ), // 添加侧边栏
       body: EasyRefresh.builder(
-        refreshOnStart: true,
+        refreshOnStart: false,
         onLoad: () async {
           Provider.of<EventProvider>(context, listen: false).loadMore();
           return IndicatorResult.none;
@@ -129,7 +140,8 @@ class _HomePageProvideState extends State<HomePageProvide> {
                 buildCard(context.watch<DataProvider>().cardInfo),
                 BuildApps(),
                 TabAction(onTagTap: (String enumConfirmType) {
-                  Provider.of<EventProvider>(context, listen: false).changeStatusCategory(enumConfirmType);
+                  Provider.of<EventProvider>(context, listen: false)
+                      .changeStatusCategory(enumConfirmType);
                 }),
                 BuildEventList(),
               ],
@@ -138,7 +150,9 @@ class _HomePageProvideState extends State<HomePageProvide> {
         },
       ),
       floatingActionButton: Visibility(
-        visible: context.watch<EventProvider>().eventListHomePageDataList.length > 10,
+        visible:
+            context.watch<EventProvider>().eventListHomePageDataList.length >
+                10,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: CircleBorder(), // 设置为圆形
@@ -155,5 +169,4 @@ class _HomePageProvideState extends State<HomePageProvide> {
       ),
     );
   }
-
 }

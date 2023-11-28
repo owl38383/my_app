@@ -13,20 +13,23 @@ String duSHA256(String input) {
   return digest.toString();
 }
 
-Map<String, dynamic> duHttpBefore(String type, Map<String,dynamic> data, String channel) {
+Map<String, dynamic> duHttpBefore(
+    String type, Map<String, dynamic> data, String channel) {
+  type = type.toLowerCase();
   final DeviceInfoUtil deviceInfoUtil = DeviceInfoUtil();
   // print(_generateMD5("method=get&sign_key=Fubang.119*(&uid=9000100000000000101&view_type=web&cc=G1000&cv=FB2.1.1.00_W1.0&ua=WebKit&sign_time=1700401463&sign_random=8437465&imei=1520931947&imsi=222222222&sign_id=10000"));
   String signKey = 'Fubang.119*(';
 
   var res = {
     'appVersion': deviceInfoUtil.getAppVersionName(),
-    'platform': "${deviceInfoUtil.getDeviceType()}${deviceInfoUtil.getAppVersionName()}",
+    'platform':
+        "${deviceInfoUtil.getDeviceType()}${deviceInfoUtil.getAppVersionName()}",
   };
 
   // 设备信息
   Map<String, dynamic> obj = {
     'uid': "",
-    'view_type': "web",
+    'view_type': "xcapp",
     'cc': "G1000",
     'cv': "FB2.1.1.00_W1.0",
     'ua': "WebKit",
@@ -36,17 +39,20 @@ Map<String, dynamic> duHttpBefore(String type, Map<String,dynamic> data, String 
     'imsi': "222222222",
     'sign_id': "10000",
   };
-  
+
   Random random = Random();
   int min = 1000000;
   int max = 9999999;
 
-  // obj['cv'] = '$channel${res['appVersion']}.00_${res['platform']}';
-  // obj['ua'] =  deviceInfoUtil.getDeviceModel();
-  obj['sign_time'] = (DateTime.now().millisecondsSinceEpoch / 1000).ceil().toString();
-  obj['sign_random'] =  (min + random.nextInt(max - min)).toString();
+  obj['imei'] = deviceInfoUtil.getAppImei();
+
+  obj['cv'] = '$channel${res['appVersion']}.00_${res['platform']}';
+  obj['ua'] = 'WebKit';
+  obj['sign_time'] =
+      (DateTime.now().millisecondsSinceEpoch / 1000).ceil().toString();
+  obj['sign_random'] = (min + random.nextInt(max - min)).toString();
   // 加密
-  if (type == 'GET' || type == 'delete') {
+  if (type == 'get' || type == 'delete') {
     obj.addAll(data);
     obj.removeWhere((key, value) => value == null || value == '');
     String href = '';
@@ -64,7 +70,7 @@ Map<String, dynamic> duHttpBefore(String type, Map<String,dynamic> data, String 
     String str = 'method=$type&sign_key=$signKey&$href';
     obj['sign'] = _generateMD5(str);
     return {
-      'params':obj,
+      'params': obj,
       'data': data,
     };
   }

@@ -19,11 +19,6 @@ class GlobalState extends ChangeNotifier {
     notifyListeners(); // 通知监听器状态已更改
   }
 
-  String getCompanyId() {
-    return companyInfo['companyId'];
-  }
-
-  String getCompanyName() {
-    return companyInfo['companyName'];
-  }
+  get companyId => companyInfo['companyId'];
+  get companyName => companyInfo['companyName'];
 }

@@ -15,7 +15,7 @@ const routerMap = {
   "xc_electrical_fire_monitoring": "",
   "xc_electrical_facilities": "",
   "xc_dtu_device": "",
-  "xc_device_distribution": "",
+  "xc_device_distribution": "/device",
   "xc_deluge_valve": "",
   "xc_component_device": "",
   "xc_check_task": "",

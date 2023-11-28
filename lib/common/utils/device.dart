@@ -65,6 +65,10 @@ class DeviceInfoUtil {
     return type;
   }
 
+  String getAppImei() {
+    return "100";
+  }
+
   String getAppVersionCode() {
     return "100";
   }

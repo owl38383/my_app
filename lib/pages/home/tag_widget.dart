@@ -44,44 +44,44 @@ class _TabActionState extends State<TabAction> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: duSetHeight(5)),
-      padding: EdgeInsets.only(top: duSetHeight(5), bottom: duSetHeight(5)),
+      padding: EdgeInsets.all(5.0),
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: Color.fromARGB(255, 207, 207, 207),
         border: Border.fromBorderSide(Borders.primaryBorder),
         borderRadius: Radii.k6pxRadius,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(confirmType.length, (index) {
           EnumConfirmType item = confirmType[index];
-          return GestureDetector(
-            onTap: () {
-              selectTag = item.type;
-              widget.onTagTap(item.type);
-              setState(() {});
-            },
-            child: Container(
-              width: duSetWidth(80),
-              height: duSetHeight(30),
-              padding: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: selectTag == item.type
-                        ? Colors.blueAccent
-                        : Colors.white,
-                  ),
+          return Expanded(
+            child: GestureDetector(
+              onTap: () {
+                selectTag = item.type;
+                widget.onTagTap(item.type);
+                setState(() {});
+              },
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  color: selectTag == item.type ? Colors.white : null,
+                  boxShadow: [
+                    Shadows.primaryShadow,
+                  ],
+                  borderRadius: Radii.k6pxRadius,
                 ),
-              ),
-              child: Text(
-                item.name,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.primaryText,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w400,
-                  fontSize: duSetFontSize(14),
-                  height: 1,
+                child: Center(
+                  child: Text(
+                    item.name,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppColors.primaryText,
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.w400,
+                      fontSize: duSetFontSize(14),
+                      height: 1,
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/router/router.gr.dart';
+import 'package:my_app/pages/home/main.dart';
 
 Widget zoomInTransition(
     BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
@@ -33,8 +34,20 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: MainRoute.page, path: '/main', children: [
           RedirectRoute(path: '', redirectTo: 'home'),
           AutoRoute(page: HomeRoute.page, path: 'home'),
-          AutoRoute(page: MessageRoute.page, path: 'message'),
+
+          AutoRoute(page: MessageMain.page, path: 'msg', children: [
+            RedirectRoute(path: '', redirectTo: 'messages'),
+            AutoRoute(page: MessageRoute.page, path: 'messages'),
+            AutoRoute(page: MessageSessionRoute.page, path: 'session'),
+          ]),
+
           AutoRoute(page: ApplicationRoute.page, path: 'application'),
+        ]),
+
+        AutoRoute(page: DeviceMain.page, path: '/device', children: [
+          RedirectRoute(path: '', redirectTo: 'list'),
+          AutoRoute(page: DeviceListRoute.page, path: 'list'),
+          AutoRoute(page: DeviceDetailRoute.page, path: 'detail'),
         ]),
         AutoRoute(page: AccountRoute.page, path: '/account'),
         RedirectRoute(path: '*', redirectTo: '/'),

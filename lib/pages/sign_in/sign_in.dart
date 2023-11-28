@@ -50,9 +50,7 @@ class _SignInPageState extends State<SignInPage> {
     // 保存用户信息
     Global.saveProfile(userProfile);
     toastInfo(msg: '登陆成功');
-    context.router.pushNamed('/main');
-    // 写本地 access_token , 不写全局，业务：离线登录
-    // 全局数据 gUser
+    context.router.pushNamed('/index');
   }
 
   // logo

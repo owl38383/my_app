@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:my_app/common/entitys/entitys.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 /// 全局配置
 class Global {
@@ -14,11 +15,17 @@ class Global {
   /// 是否 release
   static bool get isRelease => const bool.fromEnvironment("dart.vm.product");
 
+  /// websocket 实例
+  ///
+  late WebSocketChannel channel;
+
+  /// 所选单位
   static Map selectCompany = {
     'companyId': '',
     'companyType': '',
     'companyName': '',
   };
+
   static bool isFirstOpen = false;
   static bool isOfflineLogin = false;
 
@@ -30,25 +37,22 @@ class Global {
     await DeviceInfoUtil().initDeviceInfo();
     await StorageUtil().init();
     HttpUtil();
-    StorageUtil().remove(STORAGE_USER_PROFILE_KEY);
 
     // 读取离线用户信息
-    var profileJSON = StorageUtil().getJson(STORAGE_USER_PROFILE_KEY,defaultValue: {});
-    print('profileJSON');
-    print(profileJSON);
+    var profileJSON =
+        StorageUtil().getJson(STORAGE_USER_PROFILE_KEY, defaultValue: {});
     if (profileJSON.isNotEmpty) {
       profile = UserLoginRespData.fromJson(profileJSON);
-      selectCompany['companyId'] = profile.companyId.toString();
-      selectCompany['companyType'] = profile.companyType.toString();
-      selectCompany['companyName'] = profile.companyName.toString();
       isOfflineLogin = true;
     }
     // 判断是否第一次登录
-    isFirstOpen = StorageUtil().getBool(STORAGE_USER_FIRST_KEY, defaultValue: false);
+    isFirstOpen =
+        StorageUtil().getBool(STORAGE_USER_FIRST_KEY, defaultValue: false);
 
     // android 状态栏为透明的沉浸
     if (Platform.isAndroid) {
-      SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+      SystemUiOverlayStyle systemUiOverlayStyle =
+          const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     }
   }
@@ -67,5 +71,10 @@ class Global {
     StorageUtil().remove(STORAGE_USER_TOKEN_KEY);
     StorageUtil().remove(STORAGE_USER_PROFILE_KEY);
     return true;
+  }
+
+  // 持久化所选单位
+  static Future<bool> saveSelectCompant() {
+    return StorageUtil().setJson(STORAGE_USER_SELECT_COMPANY_KEY, {});
   }
 }

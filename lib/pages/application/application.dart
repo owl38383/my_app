@@ -8,8 +8,6 @@ import 'package:my_app/common/router/router.gr.dart';
 import 'package:my_app/common/utils/utils.dart';
 import 'package:my_app/common/values/values.dart';
 import 'package:my_app/common/widgets/widgets.dart';
-import 'package:my_app/global.dart';
-import 'package:provider/provider.dart';
 
 @RoutePage()
 class ApplicationPage extends StatefulWidget {
@@ -25,6 +23,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
   List<MarketMineDataTicker> ticker = [];
   List<MarketMineDataGroups> groups = [];
   int currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -46,6 +45,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
       // print(url);
       context.router.push(WebViewRoute(url: path, isReplace: true));
     } else {
+      print(path);
       context.router.pushNamed(Uri.encodeFull(duGetRouterName(path)));
     }
   }
@@ -72,19 +72,15 @@ class _ApplicationPageState extends State<ApplicationPage> {
             String url = ticker[index].imgFilePath;
             return Container(
               margin: EdgeInsets.all(10),
-              child: Image.network(url,
-                  height: duSetHeight(180),
-                  fit: BoxFit.cover,
-                  scale: 1.0, loadingBuilder: (BuildContext context,
-                      Widget child, ImageChunkEvent? loadingProgress) {
+              child: Image.network(url, height: duSetHeight(180), fit: BoxFit.cover, scale: 1.0,
+                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) {
                   return child;
                 } else {
                   return Center(
                     child: CircularProgressIndicator(
                       value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              (loadingProgress.expectedTotalBytes ?? 1)
+                          ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
                           : null,
                     ),
                   );

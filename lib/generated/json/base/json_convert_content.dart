@@ -6,7 +6,40 @@
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:my_app/common/entitys/apps/market_mine_entity.dart';
 import 'package:my_app/common/entitys/company/company_list_entity.dart';
+import 'package:my_app/common/entitys/device/device_detail_entity.dart';
+import 'package:my_app/common/entitys/device/device_list_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_building_fire_level_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_building_fire_resistance_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_building_property_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_building_structure_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_building_type_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_brand_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_class_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_linkage_status_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_model_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_online_status_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_status_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_transmit_mode_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_device_type_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_position_type_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_user_alarm_mode_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_user_role_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_user_staff_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_user_status_entity.dart';
+import 'package:my_app/common/entitys/enums/enum_user_type_entity.dart';
 import 'package:my_app/common/entitys/event/event_list_home_page_entity.dart';
+import 'package:my_app/common/entitys/infos/info_area_entity.dart';
+import 'package:my_app/common/entitys/infos/info_building_entity.dart';
+import 'package:my_app/common/entitys/infos/info_company_entity.dart';
+import 'package:my_app/common/entitys/infos/info_device_component_entity.dart';
+import 'package:my_app/common/entitys/infos/info_device_controller_entity.dart';
+import 'package:my_app/common/entitys/infos/info_device_dtu_entity.dart';
+import 'package:my_app/common/entitys/infos/info_device_entity.dart';
+import 'package:my_app/common/entitys/infos/info_floor_entity.dart';
+import 'package:my_app/common/entitys/infos/info_location_entity.dart';
+import 'package:my_app/common/entitys/infos/info_system_entity.dart';
+import 'package:my_app/common/entitys/infos/info_things_compos_entity.dart';
+import 'package:my_app/common/entitys/infos/info_things_shilter_entity.dart';
 import 'package:my_app/common/entitys/login/user_login_request_entity.dart';
 import 'package:my_app/common/entitys/login/user_login_resp_entity.dart';
 import 'package:my_app/common/entitys/statistic/count_by_cared_entity.dart';
@@ -189,6 +222,83 @@ class JsonConvert {
       return data.map<CompanyListDataListInfoCompanyEnumCompanyCheckoutStatus>((Map<String, dynamic> e) =>
           CompanyListDataListInfoCompanyEnumCompanyCheckoutStatus.fromJson(e)).toList() as M;
     }
+    if (<DeviceDetailEntity>[] is M) {
+      return data.map<DeviceDetailEntity>((Map<String, dynamic> e) => DeviceDetailEntity.fromJson(e)).toList() as M;
+    }
+    if (<DeviceListEntity>[] is M) {
+      return data.map<DeviceListEntity>((Map<String, dynamic> e) => DeviceListEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumBuildingFireLevelEntity>[] is M) {
+      return data.map<EnumBuildingFireLevelEntity>((Map<String, dynamic> e) => EnumBuildingFireLevelEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumBuildingFireResistanceEntity>[] is M) {
+      return data.map<EnumBuildingFireResistanceEntity>((Map<String, dynamic> e) =>
+          EnumBuildingFireResistanceEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumBuildingPropertyEntity>[] is M) {
+      return data.map<EnumBuildingPropertyEntity>((Map<String, dynamic> e) => EnumBuildingPropertyEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumBuildingStructureEntity>[] is M) {
+      return data.map<EnumBuildingStructureEntity>((Map<String, dynamic> e) => EnumBuildingStructureEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumBuildingTypeEntity>[] is M) {
+      return data.map<EnumBuildingTypeEntity>((Map<String, dynamic> e) => EnumBuildingTypeEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumDeviceBrandEntity>[] is M) {
+      return data.map<EnumDeviceBrandEntity>((Map<String, dynamic> e) => EnumDeviceBrandEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumDeviceClassEntity>[] is M) {
+      return data.map<EnumDeviceClassEntity>((Map<String, dynamic> e) => EnumDeviceClassEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumDeviceLinkageStatusEntity>[] is M) {
+      return data.map<EnumDeviceLinkageStatusEntity>((Map<String, dynamic> e) =>
+          EnumDeviceLinkageStatusEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumDeviceModelEntity>[] is M) {
+      return data.map<EnumDeviceModelEntity>((Map<String, dynamic> e) => EnumDeviceModelEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumDeviceOnlineStatusEntity>[] is M) {
+      return data.map<EnumDeviceOnlineStatusEntity>((Map<String, dynamic> e) =>
+          EnumDeviceOnlineStatusEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumDeviceStatusEntity>[] is M) {
+      return data.map<EnumDeviceStatusEntity>((Map<String, dynamic> e) => EnumDeviceStatusEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumDeviceTransmitModeEntity>[] is M) {
+      return data.map<EnumDeviceTransmitModeEntity>((Map<String, dynamic> e) =>
+          EnumDeviceTransmitModeEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumDeviceTypeEntity>[] is M) {
+      return data.map<EnumDeviceTypeEntity>((Map<String, dynamic> e) => EnumDeviceTypeEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumPositionTypeEntity>[] is M) {
+      return data.map<EnumPositionTypeEntity>((Map<String, dynamic> e) => EnumPositionTypeEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumUserAlarmModeEntity>[] is M) {
+      return data.map<EnumUserAlarmModeEntity>((Map<String, dynamic> e) => EnumUserAlarmModeEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<EnumUserRoleEntity>[] is M) {
+      return data.map<EnumUserRoleEntity>((Map<String, dynamic> e) => EnumUserRoleEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumUserStaffEntity>[] is M) {
+      return data.map<EnumUserStaffEntity>((Map<String, dynamic> e) => EnumUserStaffEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumUserStatusEntity>[] is M) {
+      return data.map<EnumUserStatusEntity>((Map<String, dynamic> e) => EnumUserStatusEntity.fromJson(e)).toList() as M;
+    }
+    if (<EnumUserTypeEntity>[] is M) {
+      return data.map<EnumUserTypeEntity>((Map<String, dynamic> e) => EnumUserTypeEntity.fromJson(e)).toList() as M;
+    }
     if (<EventListHomePageEntity>[] is M) {
       return data.map<EventListHomePageEntity>((Map<String, dynamic> e) => EventListHomePageEntity.fromJson(e))
           .toList() as M;
@@ -256,6 +366,286 @@ class JsonConvert {
     if (<EventListHomePageDataListLocationEnumPositionType>[] is M) {
       return data.map<EventListHomePageDataListLocationEnumPositionType>((Map<String, dynamic> e) =>
           EventListHomePageDataListLocationEnumPositionType.fromJson(e)).toList() as M;
+    }
+    if (<InfoAreaEntity>[] is M) {
+      return data.map<InfoAreaEntity>((Map<String, dynamic> e) => InfoAreaEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingEntity>[] is M) {
+      return data.map<InfoBuildingEntity>((Map<String, dynamic> e) => InfoBuildingEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingEnumBuildingType>[] is M) {
+      return data.map<InfoBuildingEnumBuildingType>((Map<String, dynamic> e) =>
+          InfoBuildingEnumBuildingType.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingEnumBuildingProperty>[] is M) {
+      return data.map<InfoBuildingEnumBuildingProperty>((Map<String, dynamic> e) =>
+          InfoBuildingEnumBuildingProperty.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingEnumBuildingFireLevel>[] is M) {
+      return data.map<InfoBuildingEnumBuildingFireLevel>((Map<String, dynamic> e) =>
+          InfoBuildingEnumBuildingFireLevel.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingEnumBuildingFireResistance>[] is M) {
+      return data.map<InfoBuildingEnumBuildingFireResistance>((Map<String, dynamic> e) =>
+          InfoBuildingEnumBuildingFireResistance.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingEnumBuildingStructure>[] is M) {
+      return data.map<InfoBuildingEnumBuildingStructure>((Map<String, dynamic> e) =>
+          InfoBuildingEnumBuildingStructure.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreater>[] is M) {
+      return data.map<InfoBuildingCreater>((Map<String, dynamic> e) => InfoBuildingCreater.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreaterEnumUserType>[] is M) {
+      return data.map<InfoBuildingCreaterEnumUserType>((Map<String, dynamic> e) =>
+          InfoBuildingCreaterEnumUserType.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreaterEnumUserRole>[] is M) {
+      return data.map<InfoBuildingCreaterEnumUserRole>((Map<String, dynamic> e) =>
+          InfoBuildingCreaterEnumUserRole.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreaterEnumUserStaff>[] is M) {
+      return data.map<InfoBuildingCreaterEnumUserStaff>((Map<String, dynamic> e) =>
+          InfoBuildingCreaterEnumUserStaff.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreaterEnumUserStatus>[] is M) {
+      return data.map<InfoBuildingCreaterEnumUserStatus>((Map<String, dynamic> e) =>
+          InfoBuildingCreaterEnumUserStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreaterEnumUserAlarmMode>[] is M) {
+      return data.map<InfoBuildingCreaterEnumUserAlarmMode>((Map<String, dynamic> e) =>
+          InfoBuildingCreaterEnumUserAlarmMode.fromJson(e)).toList() as M;
+    }
+    if (<InfoBuildingCreaterUserPic>[] is M) {
+      return data.map<InfoBuildingCreaterUserPic>((Map<String, dynamic> e) => InfoBuildingCreaterUserPic.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoCompanyEntity>[] is M) {
+      return data.map<InfoCompanyEntity>((Map<String, dynamic> e) => InfoCompanyEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoCompanyEnumCompanyCategory>[] is M) {
+      return data.map<InfoCompanyEnumCompanyCategory>((Map<String, dynamic> e) =>
+          InfoCompanyEnumCompanyCategory.fromJson(e)).toList() as M;
+    }
+    if (<InfoCompanyEnumCompanyType>[] is M) {
+      return data.map<InfoCompanyEnumCompanyType>((Map<String, dynamic> e) => InfoCompanyEnumCompanyType.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoCompanyEnumCompanyOnlineStatus>[] is M) {
+      return data.map<InfoCompanyEnumCompanyOnlineStatus>((Map<String, dynamic> e) =>
+          InfoCompanyEnumCompanyOnlineStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoCompanyEnumCompanyEconomic>[] is M) {
+      return data.map<InfoCompanyEnumCompanyEconomic>((Map<String, dynamic> e) =>
+          InfoCompanyEnumCompanyEconomic.fromJson(e)).toList() as M;
+    }
+    if (<InfoCompanyEnumCompanyRegulatorLevel>[] is M) {
+      return data.map<InfoCompanyEnumCompanyRegulatorLevel>((Map<String, dynamic> e) =>
+          InfoCompanyEnumCompanyRegulatorLevel.fromJson(e)).toList() as M;
+    }
+    if (<InfoCompanyEnumRegion>[] is M) {
+      return data.map<InfoCompanyEnumRegion>((Map<String, dynamic> e) => InfoCompanyEnumRegion.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoCompanyEnumVerifyState>[] is M) {
+      return data.map<InfoCompanyEnumVerifyState>((Map<String, dynamic> e) => InfoCompanyEnumVerifyState.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoCompanyEnumSourceFrom>[] is M) {
+      return data.map<InfoCompanyEnumSourceFrom>((Map<String, dynamic> e) => InfoCompanyEnumSourceFrom.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoCompanyEnumCompanyCheckoutStatus>[] is M) {
+      return data.map<InfoCompanyEnumCompanyCheckoutStatus>((Map<String, dynamic> e) =>
+          InfoCompanyEnumCompanyCheckoutStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceComponentEntity>[] is M) {
+      return data.map<InfoDeviceComponentEntity>((Map<String, dynamic> e) => InfoDeviceComponentEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceControllerEntity>[] is M) {
+      return data.map<InfoDeviceControllerEntity>((Map<String, dynamic> e) => InfoDeviceControllerEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceDtuEntity>[] is M) {
+      return data.map<InfoDeviceDtuEntity>((Map<String, dynamic> e) => InfoDeviceDtuEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceDtuEnumDeviceModel>[] is M) {
+      return data.map<InfoDeviceDtuEnumDeviceModel>((Map<String, dynamic> e) =>
+          InfoDeviceDtuEnumDeviceModel.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceDtuEnumDeviceClass>[] is M) {
+      return data.map<InfoDeviceDtuEnumDeviceClass>((Map<String, dynamic> e) =>
+          InfoDeviceDtuEnumDeviceClass.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceDtuEnumDeviceType>[] is M) {
+      return data.map<InfoDeviceDtuEnumDeviceType>((Map<String, dynamic> e) => InfoDeviceDtuEnumDeviceType.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceEntity>[] is M) {
+      return data.map<InfoDeviceEntity>((Map<String, dynamic> e) => InfoDeviceEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceStatus>[] is M) {
+      return data.map<InfoDeviceEnumDeviceStatus>((Map<String, dynamic> e) => InfoDeviceEnumDeviceStatus.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceType>[] is M) {
+      return data.map<InfoDeviceEnumDeviceType>((Map<String, dynamic> e) => InfoDeviceEnumDeviceType.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceModel>[] is M) {
+      return data.map<InfoDeviceEnumDeviceModel>((Map<String, dynamic> e) => InfoDeviceEnumDeviceModel.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceClass>[] is M) {
+      return data.map<InfoDeviceEnumDeviceClass>((Map<String, dynamic> e) => InfoDeviceEnumDeviceClass.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceOnlineStatus>[] is M) {
+      return data.map<InfoDeviceEnumDeviceOnlineStatus>((Map<String, dynamic> e) =>
+          InfoDeviceEnumDeviceOnlineStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceTransmitMode>[] is M) {
+      return data.map<InfoDeviceEnumDeviceTransmitMode>((Map<String, dynamic> e) =>
+          InfoDeviceEnumDeviceTransmitMode.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceLinkageStatus>[] is M) {
+      return data.map<InfoDeviceEnumDeviceLinkageStatus>((Map<String, dynamic> e) =>
+          InfoDeviceEnumDeviceLinkageStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceEnumDeviceBrand>[] is M) {
+      return data.map<InfoDeviceEnumDeviceBrand>((Map<String, dynamic> e) => InfoDeviceEnumDeviceBrand.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceEnumPositionType>[] is M) {
+      return data.map<InfoDeviceEnumPositionType>((Map<String, dynamic> e) => InfoDeviceEnumPositionType.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoDeviceCreater>[] is M) {
+      return data.map<InfoDeviceCreater>((Map<String, dynamic> e) => InfoDeviceCreater.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceCreaterEnumUserType>[] is M) {
+      return data.map<InfoDeviceCreaterEnumUserType>((Map<String, dynamic> e) =>
+          InfoDeviceCreaterEnumUserType.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceCreaterEnumUserRole>[] is M) {
+      return data.map<InfoDeviceCreaterEnumUserRole>((Map<String, dynamic> e) =>
+          InfoDeviceCreaterEnumUserRole.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceCreaterEnumUserStaff>[] is M) {
+      return data.map<InfoDeviceCreaterEnumUserStaff>((Map<String, dynamic> e) =>
+          InfoDeviceCreaterEnumUserStaff.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceCreaterEnumUserStatus>[] is M) {
+      return data.map<InfoDeviceCreaterEnumUserStatus>((Map<String, dynamic> e) =>
+          InfoDeviceCreaterEnumUserStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceCreaterEnumUserAlarmMode>[] is M) {
+      return data.map<InfoDeviceCreaterEnumUserAlarmMode>((Map<String, dynamic> e) =>
+          InfoDeviceCreaterEnumUserAlarmMode.fromJson(e)).toList() as M;
+    }
+    if (<InfoDeviceCreaterUserPic>[] is M) {
+      return data.map<InfoDeviceCreaterUserPic>((Map<String, dynamic> e) => InfoDeviceCreaterUserPic.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoFloorEntity>[] is M) {
+      return data.map<InfoFloorEntity>((Map<String, dynamic> e) => InfoFloorEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreater>[] is M) {
+      return data.map<InfoFloorCreater>((Map<String, dynamic> e) => InfoFloorCreater.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreaterEnumUserType>[] is M) {
+      return data.map<InfoFloorCreaterEnumUserType>((Map<String, dynamic> e) =>
+          InfoFloorCreaterEnumUserType.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreaterEnumUserRole>[] is M) {
+      return data.map<InfoFloorCreaterEnumUserRole>((Map<String, dynamic> e) =>
+          InfoFloorCreaterEnumUserRole.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreaterEnumUserStaff>[] is M) {
+      return data.map<InfoFloorCreaterEnumUserStaff>((Map<String, dynamic> e) =>
+          InfoFloorCreaterEnumUserStaff.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreaterEnumUserStatus>[] is M) {
+      return data.map<InfoFloorCreaterEnumUserStatus>((Map<String, dynamic> e) =>
+          InfoFloorCreaterEnumUserStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreaterEnumUserAlarmMode>[] is M) {
+      return data.map<InfoFloorCreaterEnumUserAlarmMode>((Map<String, dynamic> e) =>
+          InfoFloorCreaterEnumUserAlarmMode.fromJson(e)).toList() as M;
+    }
+    if (<InfoFloorCreaterUserPic>[] is M) {
+      return data.map<InfoFloorCreaterUserPic>((Map<String, dynamic> e) => InfoFloorCreaterUserPic.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoLocationEntity>[] is M) {
+      return data.map<InfoLocationEntity>((Map<String, dynamic> e) => InfoLocationEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationEnumLocationType>[] is M) {
+      return data.map<InfoLocationEnumLocationType>((Map<String, dynamic> e) =>
+          InfoLocationEnumLocationType.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreater>[] is M) {
+      return data.map<InfoLocationCreater>((Map<String, dynamic> e) => InfoLocationCreater.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreaterEnumUserType>[] is M) {
+      return data.map<InfoLocationCreaterEnumUserType>((Map<String, dynamic> e) =>
+          InfoLocationCreaterEnumUserType.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreaterEnumUserRole>[] is M) {
+      return data.map<InfoLocationCreaterEnumUserRole>((Map<String, dynamic> e) =>
+          InfoLocationCreaterEnumUserRole.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreaterEnumUserStaff>[] is M) {
+      return data.map<InfoLocationCreaterEnumUserStaff>((Map<String, dynamic> e) =>
+          InfoLocationCreaterEnumUserStaff.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreaterEnumUserStatus>[] is M) {
+      return data.map<InfoLocationCreaterEnumUserStatus>((Map<String, dynamic> e) =>
+          InfoLocationCreaterEnumUserStatus.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreaterEnumUserAlarmMode>[] is M) {
+      return data.map<InfoLocationCreaterEnumUserAlarmMode>((Map<String, dynamic> e) =>
+          InfoLocationCreaterEnumUserAlarmMode.fromJson(e)).toList() as M;
+    }
+    if (<InfoLocationCreaterUserPic>[] is M) {
+      return data.map<InfoLocationCreaterUserPic>((Map<String, dynamic> e) => InfoLocationCreaterUserPic.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoSystemEntity>[] is M) {
+      return data.map<InfoSystemEntity>((Map<String, dynamic> e) => InfoSystemEntity.fromJson(e)).toList() as M;
+    }
+    if (<InfoSystemEnumSystemType>[] is M) {
+      return data.map<InfoSystemEnumSystemType>((Map<String, dynamic> e) => InfoSystemEnumSystemType.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoSystemEnumSystemStatus>[] is M) {
+      return data.map<InfoSystemEnumSystemStatus>((Map<String, dynamic> e) => InfoSystemEnumSystemStatus.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoThingsComposEntity>[] is M) {
+      return data.map<InfoThingsComposEntity>((Map<String, dynamic> e) => InfoThingsComposEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoThingsComposEnumDeviceType>[] is M) {
+      return data.map<InfoThingsComposEnumDeviceType>((Map<String, dynamic> e) =>
+          InfoThingsComposEnumDeviceType.fromJson(e)).toList() as M;
+    }
+    if (<InfoThingsComposEnumPositionType>[] is M) {
+      return data.map<InfoThingsComposEnumPositionType>((Map<String, dynamic> e) =>
+          InfoThingsComposEnumPositionType.fromJson(e)).toList() as M;
+    }
+    if (<InfoThingsComposEnumDeviceClass>[] is M) {
+      return data.map<InfoThingsComposEnumDeviceClass>((Map<String, dynamic> e) =>
+          InfoThingsComposEnumDeviceClass.fromJson(e)).toList() as M;
+    }
+    if (<InfoThingsShilterEntity>[] is M) {
+      return data.map<InfoThingsShilterEntity>((Map<String, dynamic> e) => InfoThingsShilterEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<InfoThingsShilterEnumShieldStatus>[] is M) {
+      return data.map<InfoThingsShilterEnumShieldStatus>((Map<String, dynamic> e) =>
+          InfoThingsShilterEnumShieldStatus.fromJson(e)).toList() as M;
     }
     if (<UserLoginRequestEntity>[] is M) {
       return data.map<UserLoginRequestEntity>((Map<String, dynamic> e) => UserLoginRequestEntity.fromJson(e))
@@ -367,6 +757,27 @@ class JsonConvertClassCollection {
     (CompanyListDataListInfoCompanyEnumSourceFrom).toString(): CompanyListDataListInfoCompanyEnumSourceFrom.fromJson,
     (CompanyListDataListInfoCompanyEnumCompanyCheckoutStatus)
         .toString(): CompanyListDataListInfoCompanyEnumCompanyCheckoutStatus.fromJson,
+    (DeviceDetailEntity).toString(): DeviceDetailEntity.fromJson,
+    (DeviceListEntity).toString(): DeviceListEntity.fromJson,
+    (EnumBuildingFireLevelEntity).toString(): EnumBuildingFireLevelEntity.fromJson,
+    (EnumBuildingFireResistanceEntity).toString(): EnumBuildingFireResistanceEntity.fromJson,
+    (EnumBuildingPropertyEntity).toString(): EnumBuildingPropertyEntity.fromJson,
+    (EnumBuildingStructureEntity).toString(): EnumBuildingStructureEntity.fromJson,
+    (EnumBuildingTypeEntity).toString(): EnumBuildingTypeEntity.fromJson,
+    (EnumDeviceBrandEntity).toString(): EnumDeviceBrandEntity.fromJson,
+    (EnumDeviceClassEntity).toString(): EnumDeviceClassEntity.fromJson,
+    (EnumDeviceLinkageStatusEntity).toString(): EnumDeviceLinkageStatusEntity.fromJson,
+    (EnumDeviceModelEntity).toString(): EnumDeviceModelEntity.fromJson,
+    (EnumDeviceOnlineStatusEntity).toString(): EnumDeviceOnlineStatusEntity.fromJson,
+    (EnumDeviceStatusEntity).toString(): EnumDeviceStatusEntity.fromJson,
+    (EnumDeviceTransmitModeEntity).toString(): EnumDeviceTransmitModeEntity.fromJson,
+    (EnumDeviceTypeEntity).toString(): EnumDeviceTypeEntity.fromJson,
+    (EnumPositionTypeEntity).toString(): EnumPositionTypeEntity.fromJson,
+    (EnumUserAlarmModeEntity).toString(): EnumUserAlarmModeEntity.fromJson,
+    (EnumUserRoleEntity).toString(): EnumUserRoleEntity.fromJson,
+    (EnumUserStaffEntity).toString(): EnumUserStaffEntity.fromJson,
+    (EnumUserStatusEntity).toString(): EnumUserStatusEntity.fromJson,
+    (EnumUserTypeEntity).toString(): EnumUserTypeEntity.fromJson,
     (EventListHomePageEntity).toString(): EventListHomePageEntity.fromJson,
     (EventListHomePageData).toString(): EventListHomePageData.fromJson,
     (EventListHomePageDataList).toString(): EventListHomePageDataList.fromJson,
@@ -396,6 +807,79 @@ class JsonConvertClassCollection {
         .fromJson,
     (EventListHomePageDataListLocationEnumPositionType).toString(): EventListHomePageDataListLocationEnumPositionType
         .fromJson,
+    (InfoAreaEntity).toString(): InfoAreaEntity.fromJson,
+    (InfoBuildingEntity).toString(): InfoBuildingEntity.fromJson,
+    (InfoBuildingEnumBuildingType).toString(): InfoBuildingEnumBuildingType.fromJson,
+    (InfoBuildingEnumBuildingProperty).toString(): InfoBuildingEnumBuildingProperty.fromJson,
+    (InfoBuildingEnumBuildingFireLevel).toString(): InfoBuildingEnumBuildingFireLevel.fromJson,
+    (InfoBuildingEnumBuildingFireResistance).toString(): InfoBuildingEnumBuildingFireResistance.fromJson,
+    (InfoBuildingEnumBuildingStructure).toString(): InfoBuildingEnumBuildingStructure.fromJson,
+    (InfoBuildingCreater).toString(): InfoBuildingCreater.fromJson,
+    (InfoBuildingCreaterEnumUserType).toString(): InfoBuildingCreaterEnumUserType.fromJson,
+    (InfoBuildingCreaterEnumUserRole).toString(): InfoBuildingCreaterEnumUserRole.fromJson,
+    (InfoBuildingCreaterEnumUserStaff).toString(): InfoBuildingCreaterEnumUserStaff.fromJson,
+    (InfoBuildingCreaterEnumUserStatus).toString(): InfoBuildingCreaterEnumUserStatus.fromJson,
+    (InfoBuildingCreaterEnumUserAlarmMode).toString(): InfoBuildingCreaterEnumUserAlarmMode.fromJson,
+    (InfoBuildingCreaterUserPic).toString(): InfoBuildingCreaterUserPic.fromJson,
+    (InfoCompanyEntity).toString(): InfoCompanyEntity.fromJson,
+    (InfoCompanyEnumCompanyCategory).toString(): InfoCompanyEnumCompanyCategory.fromJson,
+    (InfoCompanyEnumCompanyType).toString(): InfoCompanyEnumCompanyType.fromJson,
+    (InfoCompanyEnumCompanyOnlineStatus).toString(): InfoCompanyEnumCompanyOnlineStatus.fromJson,
+    (InfoCompanyEnumCompanyEconomic).toString(): InfoCompanyEnumCompanyEconomic.fromJson,
+    (InfoCompanyEnumCompanyRegulatorLevel).toString(): InfoCompanyEnumCompanyRegulatorLevel.fromJson,
+    (InfoCompanyEnumRegion).toString(): InfoCompanyEnumRegion.fromJson,
+    (InfoCompanyEnumVerifyState).toString(): InfoCompanyEnumVerifyState.fromJson,
+    (InfoCompanyEnumSourceFrom).toString(): InfoCompanyEnumSourceFrom.fromJson,
+    (InfoCompanyEnumCompanyCheckoutStatus).toString(): InfoCompanyEnumCompanyCheckoutStatus.fromJson,
+    (InfoDeviceComponentEntity).toString(): InfoDeviceComponentEntity.fromJson,
+    (InfoDeviceControllerEntity).toString(): InfoDeviceControllerEntity.fromJson,
+    (InfoDeviceDtuEntity).toString(): InfoDeviceDtuEntity.fromJson,
+    (InfoDeviceDtuEnumDeviceModel).toString(): InfoDeviceDtuEnumDeviceModel.fromJson,
+    (InfoDeviceDtuEnumDeviceClass).toString(): InfoDeviceDtuEnumDeviceClass.fromJson,
+    (InfoDeviceDtuEnumDeviceType).toString(): InfoDeviceDtuEnumDeviceType.fromJson,
+    (InfoDeviceEntity).toString(): InfoDeviceEntity.fromJson,
+    (InfoDeviceEnumDeviceStatus).toString(): InfoDeviceEnumDeviceStatus.fromJson,
+    (InfoDeviceEnumDeviceType).toString(): InfoDeviceEnumDeviceType.fromJson,
+    (InfoDeviceEnumDeviceModel).toString(): InfoDeviceEnumDeviceModel.fromJson,
+    (InfoDeviceEnumDeviceClass).toString(): InfoDeviceEnumDeviceClass.fromJson,
+    (InfoDeviceEnumDeviceOnlineStatus).toString(): InfoDeviceEnumDeviceOnlineStatus.fromJson,
+    (InfoDeviceEnumDeviceTransmitMode).toString(): InfoDeviceEnumDeviceTransmitMode.fromJson,
+    (InfoDeviceEnumDeviceLinkageStatus).toString(): InfoDeviceEnumDeviceLinkageStatus.fromJson,
+    (InfoDeviceEnumDeviceBrand).toString(): InfoDeviceEnumDeviceBrand.fromJson,
+    (InfoDeviceEnumPositionType).toString(): InfoDeviceEnumPositionType.fromJson,
+    (InfoDeviceCreater).toString(): InfoDeviceCreater.fromJson,
+    (InfoDeviceCreaterEnumUserType).toString(): InfoDeviceCreaterEnumUserType.fromJson,
+    (InfoDeviceCreaterEnumUserRole).toString(): InfoDeviceCreaterEnumUserRole.fromJson,
+    (InfoDeviceCreaterEnumUserStaff).toString(): InfoDeviceCreaterEnumUserStaff.fromJson,
+    (InfoDeviceCreaterEnumUserStatus).toString(): InfoDeviceCreaterEnumUserStatus.fromJson,
+    (InfoDeviceCreaterEnumUserAlarmMode).toString(): InfoDeviceCreaterEnumUserAlarmMode.fromJson,
+    (InfoDeviceCreaterUserPic).toString(): InfoDeviceCreaterUserPic.fromJson,
+    (InfoFloorEntity).toString(): InfoFloorEntity.fromJson,
+    (InfoFloorCreater).toString(): InfoFloorCreater.fromJson,
+    (InfoFloorCreaterEnumUserType).toString(): InfoFloorCreaterEnumUserType.fromJson,
+    (InfoFloorCreaterEnumUserRole).toString(): InfoFloorCreaterEnumUserRole.fromJson,
+    (InfoFloorCreaterEnumUserStaff).toString(): InfoFloorCreaterEnumUserStaff.fromJson,
+    (InfoFloorCreaterEnumUserStatus).toString(): InfoFloorCreaterEnumUserStatus.fromJson,
+    (InfoFloorCreaterEnumUserAlarmMode).toString(): InfoFloorCreaterEnumUserAlarmMode.fromJson,
+    (InfoFloorCreaterUserPic).toString(): InfoFloorCreaterUserPic.fromJson,
+    (InfoLocationEntity).toString(): InfoLocationEntity.fromJson,
+    (InfoLocationEnumLocationType).toString(): InfoLocationEnumLocationType.fromJson,
+    (InfoLocationCreater).toString(): InfoLocationCreater.fromJson,
+    (InfoLocationCreaterEnumUserType).toString(): InfoLocationCreaterEnumUserType.fromJson,
+    (InfoLocationCreaterEnumUserRole).toString(): InfoLocationCreaterEnumUserRole.fromJson,
+    (InfoLocationCreaterEnumUserStaff).toString(): InfoLocationCreaterEnumUserStaff.fromJson,
+    (InfoLocationCreaterEnumUserStatus).toString(): InfoLocationCreaterEnumUserStatus.fromJson,
+    (InfoLocationCreaterEnumUserAlarmMode).toString(): InfoLocationCreaterEnumUserAlarmMode.fromJson,
+    (InfoLocationCreaterUserPic).toString(): InfoLocationCreaterUserPic.fromJson,
+    (InfoSystemEntity).toString(): InfoSystemEntity.fromJson,
+    (InfoSystemEnumSystemType).toString(): InfoSystemEnumSystemType.fromJson,
+    (InfoSystemEnumSystemStatus).toString(): InfoSystemEnumSystemStatus.fromJson,
+    (InfoThingsComposEntity).toString(): InfoThingsComposEntity.fromJson,
+    (InfoThingsComposEnumDeviceType).toString(): InfoThingsComposEnumDeviceType.fromJson,
+    (InfoThingsComposEnumPositionType).toString(): InfoThingsComposEnumPositionType.fromJson,
+    (InfoThingsComposEnumDeviceClass).toString(): InfoThingsComposEnumDeviceClass.fromJson,
+    (InfoThingsShilterEntity).toString(): InfoThingsShilterEntity.fromJson,
+    (InfoThingsShilterEnumShieldStatus).toString(): InfoThingsShilterEnumShieldStatus.fromJson,
     (UserLoginRequestEntity).toString(): UserLoginRequestEntity.fromJson,
     (UserLoginRespEntity).toString(): UserLoginRespEntity.fromJson,
     (UserLoginRespData).toString(): UserLoginRespData.fromJson,

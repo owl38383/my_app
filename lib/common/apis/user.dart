@@ -24,7 +24,11 @@ class UserAPI {
   static Future<CompanyListEntity> getCompanyListApi(
       {Map<String, dynamic>? params}) async {
     params ??= {};
-    params.addAll(getCompanyInfo());
+    params.addAll({
+      'uid': Global.profile.userId,
+      'company_id': Global.profile.companyId,
+      'company_type': Global.profile.companyType,
+    });
     var response = await HttpUtil().get(
         '/api/api_proxy/company/company_list_by_company_id/',
         params: params);
