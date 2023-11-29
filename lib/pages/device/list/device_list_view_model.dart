@@ -31,10 +31,6 @@ class DeviceListViewModel extends ChangeNotifier {
 
   DeviceListRequest deviceListRequest = DeviceListRequest(pageNo: 0, pageSize: 20, deviceThingType: '');
 
-  /// 额外参数
-  /// device_thing_type
-  String device_thing_type = '';
-
   /// 请求数据
   Future<List<DeviceDetailEntity>> _fetchData() async {
     try {

@@ -4,8 +4,8 @@ import 'package:my_app/pages/device/list/device_list_view_model.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
-class DeviceMain extends StatelessWidget {
-  const DeviceMain({super.key});
+class DeviceMainPage extends StatelessWidget {
+  const DeviceMainPage({super.key});
 
   @override
   Widget build(BuildContext context) {

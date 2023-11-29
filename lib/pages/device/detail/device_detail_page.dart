@@ -106,9 +106,13 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
                     return Container(
                       margin: EdgeInsets.only(top: duSetHeight(10)),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          textLine(entries[index].key, fontSize: 16.0),
+                          SizedBox(
+                            width: duSetWidth(100),
+                            child: textLine(entries[index].key, fontSize: 16.0),
+                          ),
+
                           textLine(entries[index].value, fontSize: 16.0),
                         ],
                       ),

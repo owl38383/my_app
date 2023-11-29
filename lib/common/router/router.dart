@@ -35,7 +35,7 @@ class AppRouter extends $AppRouter {
           RedirectRoute(path: '', redirectTo: 'home'),
           AutoRoute(page: HomeRoute.page, path: 'home'),
 
-          AutoRoute(page: MessageMain.page, path: 'msg', children: [
+          AutoRoute(page: MessageMainRoute.page, path: 'msg', children: [
             RedirectRoute(path: '', redirectTo: 'messages'),
             AutoRoute(page: MessageRoute.page, path: 'messages'),
             AutoRoute(page: MessageSessionRoute.page, path: 'session'),
@@ -44,7 +44,7 @@ class AppRouter extends $AppRouter {
           AutoRoute(page: ApplicationRoute.page, path: 'application'),
         ]),
 
-        AutoRoute(page: DeviceMain.page, path: '/device', children: [
+        AutoRoute(page: DeviceMainRoute.page, path: '/device', children: [
           RedirectRoute(path: '', redirectTo: 'list'),
           AutoRoute(page: DeviceListRoute.page, path: 'list'),
           AutoRoute(page: DeviceDetailRoute.page, path: 'detail'),

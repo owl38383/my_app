@@ -66,7 +66,6 @@ class ScaffoldWithTabBar extends StatelessWidget {
           ),
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            // 当底部导航页面超过三个时
             type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
