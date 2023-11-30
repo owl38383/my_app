@@ -1,18 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/router/router.gr.dart';
+import 'package:my_app/pages/message/pages/message_session_page.dart';
 import 'package:my_app/pages/message/view_model/message_view_model.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
-class MessagePage extends StatefulWidget {
-  const MessagePage({super.key});
+class MessageListPage extends StatefulWidget {
+  const MessageListPage({super.key});
 
   @override
-  State<MessagePage> createState() => _MessagePageState();
+  State<MessageListPage> createState() => _MessageListPageState();
 }
 
-class _MessagePageState extends State<MessagePage> {
+class _MessageListPageState extends State<MessageListPage> {
   @override
   void initState() {
     super.initState();
@@ -94,10 +95,11 @@ class _MessagePageState extends State<MessagePage> {
 
   @override
   Widget build(BuildContext context) {
-    MessageViewMode messageViewMode = context.watch<MessageViewMode>();
+    final messageViewMode = Provider.of<MessageViewMode>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('消息'),
+        leading: AutoLeadingButton(),
       ),
       body: Column(
         children: [
@@ -126,11 +128,12 @@ class _MessagePageState extends State<MessagePage> {
                           .toString()
                       : '-'),
                   onTap: () {
-                    context.router.push(
+                    context.pushRoute(
                       MessageSessionRoute(
                           sessionId: messageViewMode.groupMessage[index].sessionId,
                           sessionType: messageViewMode.groupMessage[index].sessionType),
                     );
+
                   },
                 );
               },

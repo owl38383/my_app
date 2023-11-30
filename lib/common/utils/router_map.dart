@@ -26,6 +26,6 @@ const routerMap = {
   "xc_all_device": "",
 };
 
-duGetRouterName(String navigation) {
-  return routerMap[navigation];
+String duGetRouterName(String navigation) {
+  return routerMap[navigation] ?? '';
 }

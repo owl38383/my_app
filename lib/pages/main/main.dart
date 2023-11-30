@@ -20,12 +20,14 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     routes = [
       const HomeRoute(),
-      const MessageRoute(),
+      const MessageListRoute(),
+      const EventListRoute(),
       const ApplicationRoute(),
     ];
     items = [
       const BottomNavigationBarItem(label: '首页', icon: Icon(Icons.home)),
       const BottomNavigationBarItem(label: '消息', icon: Icon(Icons.message)),
+      const BottomNavigationBarItem(label: '事件', icon: Icon(Icons.event)),
       const BottomNavigationBarItem(label: '工作台', icon: Icon(Icons.apps)),
     ];
   }
@@ -85,19 +87,20 @@ class ScaffoldWithNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter.pageView(
+    return AutoTabsRouter(
       routes: routes,
-      builder: (context, child, _) {
+      transitionBuilder: (context,child,animation)=> FadeTransition(
+        opacity: animation,
+        // the passed child is technically our animated selected-tab page
+        child: child,
+      ),
+      builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
-          // appBar: AppBar(
-          //   title: Text(context.topRoute.name),
-          //   leading: AutoLeadingButton(),
-          // ),
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
+            type: BottomNavigationBarType.fixed,
             onTap: tabsRouter.setActiveIndex,
             items: items,
           ),

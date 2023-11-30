@@ -228,6 +228,7 @@ class HttpUtil {
           queryParameters: singResp,
           options: tokenOptions,
           cancelToken: cancelToken);
+      print(response.data['code']);
       return response.data;
     } on DioException catch (e) {
       throw createErrorEntity(e);

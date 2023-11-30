@@ -63,6 +63,7 @@ class MessageViewMode extends ChangeNotifier {
   late WebSocketManager webSocketManager;
 
   init() {
+    print('init');
     if (groupMessage.length == 0) {
       groupMessage.add(MessageEntity('1', 'user'));
       groupMessage.add(MessageEntity('2', 'room'));

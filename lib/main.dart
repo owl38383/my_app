@@ -5,13 +5,15 @@ import 'package:provider/provider.dart';
 
 import 'common/router/router.dart';
 import 'common/provider/global_state.dart';
+import 'pages/message/view_model/message_view_model.dart';
 
 void main() {
   Provider.debugCheckInvalidValueType = null;
   Global.init().then((value) => runApp(
         MultiProvider(
           providers: [
-            Provider<GlobalState>(create: (_) => GlobalState()),
+            ChangeNotifierProvider(create: (_) => MessageViewMode()),
+            ChangeNotifierProvider(create: (_) => GlobalState()),
           ],
           child: const MyApp(),
         ),

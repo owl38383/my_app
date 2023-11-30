@@ -42,11 +42,13 @@ class _ApplicationPageState extends State<ApplicationPage> {
   _toApplication(BuildContext context, String path) {
     if (path.startsWith('http')) {
       path = path.replaceAll('81.70.154.161', '47.95.1.44');
-      // print(url);
       context.router.push(WebViewRoute(url: path, isReplace: true));
     } else {
-      print(path);
-      context.router.pushNamed(Uri.encodeFull(duGetRouterName(path)));
+      if(duGetRouterName(path).isNotEmpty){
+        context.router.pushNamed(Uri.encodeFull(duGetRouterName(path)));
+      }else{
+        toastInfo(msg: '应用未开发');
+      }
     }
   }
 
@@ -93,7 +95,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
     }
   }
 
-  Widget _buildApplicatonGroup() {
+  Widget _buildApplicationGroup() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +182,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
               marginTop: 5,
             ),
             _buildBanner(),
-            _buildApplicatonGroup(),
+            _buildApplicationGroup(),
           ],
         ),
       ),
